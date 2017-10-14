@@ -26,6 +26,7 @@ public class StockDataPullService extends IntentService {
         super.onCreate();
         networkHTTPRequests = new NetworkHTTPRequests(getApplicationContext());
         jSONparser = new JSONparser();
+        helper = BaseActivity.helper;
     }
 
     public StockDataPullService() {
@@ -40,79 +41,105 @@ public class StockDataPullService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
 
-        helper = BaseActivity.helper;
-
         if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_MATERIAL_KEY)){
+            try {
+                String getMaterialsResponce = null;
+                getMaterialsResponce = networkHTTPRequests.getMaterials();
+                Status status = jSONparser.getStatusFromJson(getMaterialsResponce);
+                if (status != null && status.getCode() == 200)
+                    helper.addMaterialsQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getMaterialsResponce));
 
-            String getMaterialsResponce = null;
-            getMaterialsResponce = networkHTTPRequests.getMaterials();
-            Status status  = jSONparser.getStatusFromJson(getMaterialsResponce);
-            if(status!=null && status.getCode() == 200)
-                helper.addMaterialsQuoteDataToQuotesTable( jSONparser.getResultsFromJson(getMaterialsResponce) );
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_GOODS_KEY)){
-
-            String getGoodsResponce = null;
-            getGoodsResponce = networkHTTPRequests.getGoods();
-            Status status  = jSONparser.getStatusFromJson(getGoodsResponce);
-            if(status!=null && status.getCode() == 200)
-                helper.addGoodsQuoteDataToQuotesTable(  jSONparser.getResultsFromJson(getGoodsResponce)  );
+            try {
+                String getGoodsResponce = null;
+                getGoodsResponce = networkHTTPRequests.getGoods();
+                Status status = jSONparser.getStatusFromJson(getGoodsResponce);
+                if (status != null && status.getCode() == 200)
+                    helper.addGoodsQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getGoodsResponce));
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_SERVICES_KEY)){
-
-            String getServicesResponce = null;
-            getServicesResponce = networkHTTPRequests.getServices();
-            Status status  = jSONparser.getStatusFromJson(getServicesResponce);
-            if(status!=null && status.getCode() == 200)
-                helper.addServicesQuoteDataToQuotesTable( jSONparser.getResultsFromJson(getServicesResponce) );
+            try {
+                String getServicesResponce = null;
+                getServicesResponce = networkHTTPRequests.getServices();
+                Status status = jSONparser.getStatusFromJson(getServicesResponce);
+                if (status != null && status.getCode() == 200)
+                    helper.addServicesQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getServicesResponce));
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_FINANCIALS_KEY)){
-
-            String getFinancialsResponce = null;
-            getFinancialsResponce = networkHTTPRequests.getFinancials();
-            Status status  = jSONparser.getStatusFromJson(getFinancialsResponce);
-            if(status!=null && status.getCode() == 200)
-                helper.addFinancialsQuoteDataToQuotesTable( jSONparser.getResultsFromJson(getFinancialsResponce) );
+            try {
+                String getFinancialsResponce = null;
+                getFinancialsResponce = networkHTTPRequests.getFinancials();
+                Status status = jSONparser.getStatusFromJson(getFinancialsResponce);
+                if (status != null && status.getCode() == 200)
+                    helper.addFinancialsQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getFinancialsResponce));
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_HEALTHCARE_KEY)){
-
-            String getHelthCareResponce = null;
-            getHelthCareResponce = networkHTTPRequests.getHelthCare();
-            Status status  = jSONparser.getStatusFromJson(getHelthCareResponce);
-            if(status!=null && status.getCode() == 200)
-                helper.addHealthCareQuoteDataToQuotesTable( jSONparser.getResultsFromJson(getHelthCareResponce) );
+            try {
+                String getHelthCareResponce = null;
+                getHelthCareResponce = networkHTTPRequests.getHelthCare();
+                Status status = jSONparser.getStatusFromJson(getHelthCareResponce);
+                if (status != null && status.getCode() == 200)
+                    helper.addHealthCareQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getHelthCareResponce));
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_OILANDGAS_KEY)){
-
-            String getOilandGasResponce = null;
-            getOilandGasResponce = networkHTTPRequests.getOilandGas();
-            Status status  = jSONparser.getStatusFromJson(getOilandGasResponce);
-            if(status!=null && status.getCode() == 200)
-                helper.addOilAndGasQuoteDataToQuotesTable( jSONparser.getResultsFromJson(getOilandGasResponce) );
+            try {
+                String getOilandGasResponce = null;
+                getOilandGasResponce = networkHTTPRequests.getOilandGas();
+                Status status = jSONparser.getStatusFromJson(getOilandGasResponce);
+                if (status != null && status.getCode() == 200)
+                    helper.addOilAndGasQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getOilandGasResponce));
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_TECHNOLOGY_KEY)){
-
-            String getTechnologyResponce = null;
-            getTechnologyResponce = networkHTTPRequests.getTechnology();
-            Status status  = jSONparser.getStatusFromJson(getTechnologyResponce);
-            if(status!=null && status.getCode() == 200)
-                helper.addTechnologyQuoteDataToQuotesTable( jSONparser.getResultsFromJson(getTechnologyResponce) );
+            try {
+                String getTechnologyResponce = null;
+                getTechnologyResponce = networkHTTPRequests.getTechnology();
+                Status status = jSONparser.getStatusFromJson(getTechnologyResponce);
+                if (status != null && status.getCode() == 200)
+                    helper.addTechnologyQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getTechnologyResponce));
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_UTILITIES_KEY)){
-
-            String getUtilitiesResponce = null;
-            getUtilitiesResponce = networkHTTPRequests.getUtilities();
-            Status status  = jSONparser.getStatusFromJson(getUtilitiesResponce);
-            if(status!=null && status.getCode() == 200)
-                helper.addUtilitiesQuoteDataToQuotesTable( jSONparser.getResultsFromJson(getUtilitiesResponce) );
+            try {
+                String getUtilitiesResponce = null;
+                getUtilitiesResponce = networkHTTPRequests.getUtilities();
+                Status status = jSONparser.getStatusFromJson(getUtilitiesResponce);
+                if (status != null && status.getCode() == 200)
+                    helper.addUtilitiesQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getUtilitiesResponce));
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_INDUSTRIAL_KEY)){
-
-            String getIndastrialResponce = null;
-            getIndastrialResponce = networkHTTPRequests.getIndastrial();
-            Status status  = jSONparser.getStatusFromJson(getIndastrialResponce);
-            if(status!=null && status.getCode() == 200)
-                helper.addIndustrialQuoteDataToQuotesTable( jSONparser.getResultsFromJson(getIndastrialResponce) );
+            try {
+                String getIndastrialResponce = null;
+                getIndastrialResponce = networkHTTPRequests.getIndastrial();
+                Status status = jSONparser.getStatusFromJson(getIndastrialResponce);
+                if (status != null && status.getCode() == 200)
+                    helper.addIndustrialQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getIndastrialResponce));
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
         }
     }
