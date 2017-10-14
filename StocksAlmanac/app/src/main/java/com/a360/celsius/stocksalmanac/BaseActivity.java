@@ -13,12 +13,14 @@ import com.a360.celsius.stocksalmanac.dbhelper.DatabaseHelper;
 
 public class BaseActivity extends AppCompatActivity {
 
+    public static DatabaseHelper helper = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // In any activity just pass the context and use the singleton method
-        DatabaseHelper helper = DatabaseHelper.getInstance(this);
+        helper = DatabaseHelper.getInstance(getApplicationContext());
     }
 
     @Override
