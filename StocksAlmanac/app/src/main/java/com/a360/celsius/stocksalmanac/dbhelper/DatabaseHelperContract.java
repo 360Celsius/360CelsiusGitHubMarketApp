@@ -1,6 +1,9 @@
 package com.a360.celsius.stocksalmanac.dbhelper;
 
+import android.net.Uri;
 import android.provider.BaseColumns;
+
+import java.util.Locale;
 
 /**
  * Created by dennisshar on 13/10/2017.
@@ -8,11 +11,19 @@ import android.provider.BaseColumns;
 
 public class DatabaseHelperContract {
 
+    public static final String packageName = "com.a360.celsius.stocksalmanac";
+    public static final String AUTHORITY = packageName + ".provider";
+    public static final String CONTENT_BASE = "content://"+AUTHORITY+"/%s";
+
     private DatabaseHelperContract() {}
 
     //=============================MATERIALS========================================
     /* Inner class that defines the table contents */
     public static class MaterialsQuotesDataTableContents implements BaseColumns {
+
+        public static final String URI_SUFFIX = "materials_qoutes_data";
+        public static final Uri CONTENT_URI = Uri.parse(String.format(Locale.US,CONTENT_BASE, URI_SUFFIX));
+
         public static final String TABLE_NAME = "materials_qoutes_data";
         public static final String COLUMN_NAME_SYMBOL = "symbol";
         public static final String COLUMN_NAME_EXCHANGE = "exchange";
@@ -62,6 +73,10 @@ public class DatabaseHelperContract {
     //=============================GOODS========================================
     /* Inner class that defines the table contents */
     public static class GoodsQuotesDataTableContents implements BaseColumns {
+
+        public static final String URI_SUFFIX = "goods_qoutes_data";
+        public static final Uri CONTENT_URI = Uri.parse(String.format(Locale.US,CONTENT_BASE, URI_SUFFIX));
+
         public static final String TABLE_NAME = "goods_qoutes_data";
         public static final String COLUMN_NAME_SYMBOL = "symbol";
         public static final String COLUMN_NAME_EXCHANGE = "exchange";
@@ -112,6 +127,10 @@ public class DatabaseHelperContract {
     //=============================SERVICES========================================
     /* Inner class that defines the table contents */
     public static class ServicesQuotesDataTableContents implements BaseColumns {
+
+        public static final String URI_SUFFIX = "services_qoutes_data";
+        public static final Uri CONTENT_URI = Uri.parse(String.format(Locale.US,CONTENT_BASE, URI_SUFFIX));
+
         public static final String TABLE_NAME = "services_qoutes_data";
         public static final String COLUMN_NAME_SYMBOL = "symbol";
         public static final String COLUMN_NAME_EXCHANGE = "exchange";
@@ -161,6 +180,10 @@ public class DatabaseHelperContract {
     //=============================FINANCIALS========================================
     /* Inner class that defines the table contents */
     public static class FinancialsQuotesDataTableContents implements BaseColumns {
+
+        public static final String URI_SUFFIX = "financials_qoutes_data";
+        public static final Uri CONTENT_URI = Uri.parse(String.format(Locale.US,CONTENT_BASE, URI_SUFFIX));
+
         public static final String TABLE_NAME = "financials_qoutes_data";
         public static final String COLUMN_NAME_SYMBOL = "symbol";
         public static final String COLUMN_NAME_EXCHANGE = "exchange";
@@ -210,6 +233,10 @@ public class DatabaseHelperContract {
     //=============================HEALTHCARE========================================
     /* Inner class that defines the table contents */
     public static class HealthCareQuotesDataTableContents implements BaseColumns {
+
+        public static final String URI_SUFFIX = "healthcare_qoutes_data";
+        public static final Uri CONTENT_URI = Uri.parse(String.format(Locale.US,CONTENT_BASE, URI_SUFFIX));
+
         public static final String TABLE_NAME = "healthcare_qoutes_data";
         public static final String COLUMN_NAME_SYMBOL = "symbol";
         public static final String COLUMN_NAME_EXCHANGE = "exchange";
@@ -259,6 +286,10 @@ public class DatabaseHelperContract {
     //=============================OILANDGAS========================================
     /* Inner class that defines the table contents */
     public static class OilANdGasQuotesDataTableContents implements BaseColumns {
+
+        public static final String URI_SUFFIX = "oilandgas_qoutes_data";
+        public static final Uri CONTENT_URI = Uri.parse(String.format(Locale.US,CONTENT_BASE, URI_SUFFIX));
+
         public static final String TABLE_NAME = "oilandgas_qoutes_data";
         public static final String COLUMN_NAME_SYMBOL = "symbol";
         public static final String COLUMN_NAME_EXCHANGE = "exchange";
@@ -308,6 +339,10 @@ public class DatabaseHelperContract {
     //=============================TECHNOLOGY========================================
     /* Inner class that defines the table contents */
     public static class TechnologyQuotesDataTableContents implements BaseColumns {
+
+        public static final String URI_SUFFIX = "technology_qoutes_data";
+        public static final Uri CONTENT_URI = Uri.parse(String.format(Locale.US,CONTENT_BASE, URI_SUFFIX));
+
         public static final String TABLE_NAME = "technology_qoutes_data";
         public static final String COLUMN_NAME_SYMBOL = "symbol";
         public static final String COLUMN_NAME_EXCHANGE = "exchange";
@@ -357,6 +392,10 @@ public class DatabaseHelperContract {
     //=============================UTILITIES========================================
     /* Inner class that defines the table contents */
     public static class UtilitiesQuotesDataTableContents implements BaseColumns {
+
+        public static final String URI_SUFFIX = "utilities_qoutes_data";
+        public static final Uri CONTENT_URI = Uri.parse(String.format(Locale.US,CONTENT_BASE, URI_SUFFIX));
+
         public static final String TABLE_NAME = "utilities_qoutes_data";
         public static final String COLUMN_NAME_SYMBOL = "symbol";
         public static final String COLUMN_NAME_EXCHANGE = "exchange";
@@ -406,6 +445,10 @@ public class DatabaseHelperContract {
     //=============================INDUSTRIAL========================================
     /* Inner class that defines the table contents */
     public static class IndustrialQuotesDataTableContents implements BaseColumns {
+
+        public static final String URI_SUFFIX = "industrial_qoutes_data";
+        public static final Uri CONTENT_URI = Uri.parse(String.format(Locale.US,CONTENT_BASE, URI_SUFFIX));
+
         public static final String TABLE_NAME = "industrial_qoutes_data";
         public static final String COLUMN_NAME_SYMBOL = "symbol";
         public static final String COLUMN_NAME_EXCHANGE = "exchange";

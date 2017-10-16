@@ -15,7 +15,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         Intent msgIntentGetExternalIP = new Intent(getApplicationContext(), StockDataPullService.class);
-        msgIntentGetExternalIP.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY,StockDataPullServiceIntentKeys.DATA_TYPE_GOODS_KEY);
+        msgIntentGetExternalIP.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY,StockDataPullServiceIntentKeys.DATA_TYPE_MATERIAL_KEY);
         startService(msgIntentGetExternalIP);
 
 

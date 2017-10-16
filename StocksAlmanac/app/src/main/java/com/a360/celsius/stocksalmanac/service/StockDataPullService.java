@@ -47,7 +47,7 @@ public class StockDataPullService extends IntentService {
                 getMaterialsResponce = networkHTTPRequests.getMaterials();
                 Status status = jSONparser.getStatusFromJson(getMaterialsResponce);
                 if (status != null && status.getCode() == 200)
-                    helper.addMaterialsQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getMaterialsResponce));
+                    helper.bulkInsertMaterialsQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getMaterialsResponce));
 
             }catch (Exception e){
                 e.printStackTrace();
@@ -59,7 +59,7 @@ public class StockDataPullService extends IntentService {
                 getGoodsResponce = networkHTTPRequests.getGoods();
                 Status status = jSONparser.getStatusFromJson(getGoodsResponce);
                 if (status != null && status.getCode() == 200)
-                    helper.addGoodsQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getGoodsResponce));
+                    helper.bulkInsertGoodsQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getGoodsResponce));
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -70,7 +70,7 @@ public class StockDataPullService extends IntentService {
                 getServicesResponce = networkHTTPRequests.getServices();
                 Status status = jSONparser.getStatusFromJson(getServicesResponce);
                 if (status != null && status.getCode() == 200)
-                    helper.addServicesQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getServicesResponce));
+                    helper.bulkInsertServicesQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getServicesResponce));
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -81,7 +81,7 @@ public class StockDataPullService extends IntentService {
                 getFinancialsResponce = networkHTTPRequests.getFinancials();
                 Status status = jSONparser.getStatusFromJson(getFinancialsResponce);
                 if (status != null && status.getCode() == 200)
-                    helper.addFinancialsQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getFinancialsResponce));
+                    helper.bulkInsertFinancialsQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getFinancialsResponce));
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -92,7 +92,7 @@ public class StockDataPullService extends IntentService {
                 getHelthCareResponce = networkHTTPRequests.getHelthCare();
                 Status status = jSONparser.getStatusFromJson(getHelthCareResponce);
                 if (status != null && status.getCode() == 200)
-                    helper.addHealthCareQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getHelthCareResponce));
+                    helper.bulkInsertHealthCareQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getHelthCareResponce));
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -103,7 +103,7 @@ public class StockDataPullService extends IntentService {
                 getOilandGasResponce = networkHTTPRequests.getOilandGas();
                 Status status = jSONparser.getStatusFromJson(getOilandGasResponce);
                 if (status != null && status.getCode() == 200)
-                    helper.addOilAndGasQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getOilandGasResponce));
+                    helper.bulkInsertOilAndGasQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getOilandGasResponce));
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -114,7 +114,7 @@ public class StockDataPullService extends IntentService {
                 getTechnologyResponce = networkHTTPRequests.getTechnology();
                 Status status = jSONparser.getStatusFromJson(getTechnologyResponce);
                 if (status != null && status.getCode() == 200)
-                    helper.addTechnologyQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getTechnologyResponce));
+                    helper.bulkInsertTechnologyQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getTechnologyResponce));
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -125,7 +125,7 @@ public class StockDataPullService extends IntentService {
                 getUtilitiesResponce = networkHTTPRequests.getUtilities();
                 Status status = jSONparser.getStatusFromJson(getUtilitiesResponce);
                 if (status != null && status.getCode() == 200)
-                    helper.addUtilitiesQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getUtilitiesResponce));
+                    helper.bulkInsertUtilitiesQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getUtilitiesResponce));
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -136,7 +136,7 @@ public class StockDataPullService extends IntentService {
                 getIndastrialResponce = networkHTTPRequests.getIndastrial();
                 Status status = jSONparser.getStatusFromJson(getIndastrialResponce);
                 if (status != null && status.getCode() == 200)
-                    helper.addIndustrialQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getIndastrialResponce));
+                    helper.bulkInsertIndustrialQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getIndastrialResponce));
             }catch (Exception e){
                 e.printStackTrace();
             }
