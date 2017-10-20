@@ -11,8 +11,15 @@ import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.a360.celsius.stocksalmanac.datamodel.SideMenuItemDataModel;
+import com.a360.celsius.stocksalmanac.listadapter.SideMenuListCustomAdapter;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     RelativeLayout mainView;
     Toolbar toolbar;
+
+    ArrayList<SideMenuItemDataModel> dataModels;
+    ListView listView;
+
+
+    private static SideMenuListCustomAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +76,36 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(R.drawable.ic_drawer);
         //toolbar.setLogo(R.drawable.logo);
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
+
+
+
+        listView=(ListView)findViewById(R.id.side_menu_list);
+
+        dataModels= new ArrayList<>();
+
+        dataModels= new ArrayList<>();
+
+        dataModels.add(new SideMenuItemDataModel("Financials", R.drawable.financials));
+        dataModels.add(new SideMenuItemDataModel("Goods", R.drawable.goods));
+        dataModels.add(new SideMenuItemDataModel("Health Care", R.drawable.healthcare));
+        dataModels.add(new SideMenuItemDataModel("Industrial", R.drawable.industrial));
+        dataModels.add(new SideMenuItemDataModel("Materials", R.drawable.materials));
+        dataModels.add(new SideMenuItemDataModel("Oil & Gas", R.drawable.oilandgas));
+        dataModels.add(new SideMenuItemDataModel("Services", R.drawable.services));
+        dataModels.add(new SideMenuItemDataModel("Technology", R.drawable.technology));
+        dataModels.add(new SideMenuItemDataModel("Utilities", R.drawable.utilities));
+
+        adapter= new SideMenuListCustomAdapter(dataModels,getApplicationContext());
+
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                SideMenuItemDataModel dataModel= dataModels.get(position);
+
+            }
+        });
 
     }
 
