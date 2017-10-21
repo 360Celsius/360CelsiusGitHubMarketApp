@@ -30,6 +30,8 @@
             android:name=".dbhelper.AlmanacProvider"
             android:exported="true" />
 
+        <receiver android:name="com.a360.celsius.stocksalmanac.recivers.BroadCastReciver" />
+
     </application>
 
 </manifest>

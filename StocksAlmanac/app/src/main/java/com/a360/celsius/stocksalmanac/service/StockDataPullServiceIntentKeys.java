@@ -6,6 +6,7 @@ package com.a360.celsius.stocksalmanac.service;
 
 public class StockDataPullServiceIntentKeys {
     public static final String DATA_TYPE_KEY = "DATA_TYPE_KEY";
+    public static final String DATA_CONTENT_KEY = "DATA_CONTENT_KEY";
 
     public static final String DATA_TYPE_MATERIAL_KEY = "DATA_TYPE_MATERIAL_KEY";
     public static final String DATA_TYPE_GOODS_KEY = "DATA_TYPE_GOODS_KEY";

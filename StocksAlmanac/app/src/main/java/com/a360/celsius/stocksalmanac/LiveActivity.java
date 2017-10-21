@@ -1,6 +1,8 @@
 package com.a360.celsius.stocksalmanac;
 
 
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.graphics.Color;
 import android.support.v4.widget.DrawerLayout;
@@ -15,13 +17,16 @@ import android.widget.RelativeLayout;
 
 import com.a360.celsius.stocksalmanac.datamodel.SideMenuItemDataModel;
 import com.a360.celsius.stocksalmanac.listadapter.SideMenuListCustomAdapter;
+import com.a360.celsius.stocksalmanac.recivers.BroadCastReciver;
+import com.a360.celsius.stocksalmanac.service.StockDataPullService;
+import com.a360.celsius.stocksalmanac.service.StockDataPullServiceIntentKeys;
 
 import java.util.ArrayList;
 
 public class LiveActivity extends BaseActivity {
 
 
-
+    private BroadCastReciver receiver;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private DrawerLayout drawerLayout;
     private RelativeLayout mainView;
@@ -87,15 +92,15 @@ public class LiveActivity extends BaseActivity {
 
         dataModels= new ArrayList<>();
 
-        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_financials), R.drawable.financials,getResources().getColor(R.color.sliding_menu_financials_bg)));
-        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_goods), R.drawable.goods,getResources().getColor(R.color.sliding_menu_goods_bg)));
-        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_healthcare), R.drawable.healthcare,getResources().getColor(R.color.sliding_menu_healthcare_bg)));
-        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_industrial), R.drawable.industrial,getResources().getColor(R.color.sliding_menu_industrial_bg)));
-        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_materials), R.drawable.materials,getResources().getColor(R.color.sliding_menu_materials_bg)));
-        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_oilandgas), R.drawable.oilandgas,getResources().getColor(R.color.sliding_menu_oilandgas_bg)));
-        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_services), R.drawable.services,getResources().getColor(R.color.sliding_menu_services_bg)));
-        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_technology), R.drawable.technology,getResources().getColor(R.color.sliding_menu_technology_bg)));
-        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_utilities), R.drawable.utilities,getResources().getColor(R.color.sliding_menu_utilities_bg)));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_financials), R.drawable.financials,getResources().getColor(R.color.sliding_menu_financials_bg),1));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_goods), R.drawable.goods,getResources().getColor(R.color.sliding_menu_goods_bg),2));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_healthcare), R.drawable.healthcare,getResources().getColor(R.color.sliding_menu_healthcare_bg),3));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_industrial), R.drawable.industrial,getResources().getColor(R.color.sliding_menu_industrial_bg),4));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_materials), R.drawable.materials,getResources().getColor(R.color.sliding_menu_materials_bg),5));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_oilandgas), R.drawable.oilandgas,getResources().getColor(R.color.sliding_menu_oilandgas_bg),6));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_services), R.drawable.services,getResources().getColor(R.color.sliding_menu_services_bg),7));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_technology), R.drawable.technology,getResources().getColor(R.color.sliding_menu_technology_bg),8));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_utilities), R.drawable.utilities,getResources().getColor(R.color.sliding_menu_utilities_bg),9));
 
         adapter= new SideMenuListCustomAdapter(dataModels,getApplicationContext());
 
@@ -106,11 +111,71 @@ public class LiveActivity extends BaseActivity {
 
                 SideMenuItemDataModel dataModel= dataModels.get(position);
                 setSideMenuSeperatorColor(dataModel);
-                setMainViewColor(dataModel);
+                sendServiceRequestBySelectedCategory(dataModel);
+                //setMainViewColor(dataModel);
 
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        IntentFilter filter = new IntentFilter(StockDataPullService.GET_QOUTES_DATA);
+        receiver = new BroadCastReciver();
+        registerReceiver(receiver, filter);
+    }
+
+    @Override
+    protected void onStop() {
+        unregisterReceiver(receiver);
+        super.onStop();
+    }
+
+    private void sendServiceRequestBySelectedCategory(SideMenuItemDataModel dataModel) {
+
+        Intent msgIntent = new Intent(getApplicationContext(), StockDataPullService.class);
+        switch (dataModel.getCategoryID()){
+            case 1:
+                msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_FINANCIALS_KEY);
+                startService(msgIntent);
+                break;
+            case 2:
+                msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_GOODS_KEY);
+                startService(msgIntent);
+                break;
+            case 3:
+                msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_HEALTHCARE_KEY);
+                startService(msgIntent);
+                break;
+            case 4:
+                msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_INDUSTRIAL_KEY);
+                startService(msgIntent);
+                break;
+            case 5:
+                msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_MATERIAL_KEY);
+                startService(msgIntent);
+                break;
+            case 6:
+                msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_OILANDGAS_KEY);
+                startService(msgIntent);
+                break;
+            case 7:
+                msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_SERVICES_KEY);
+                startService(msgIntent);
+                break;
+            case 8:
+                msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_TECHNOLOGY_KEY);
+                startService(msgIntent);
+                break;
+            case 9:
+                msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_UTILITIES_KEY);
+                startService(msgIntent);
+                break;
+
+        }
     }
 
     private void setMainViewColor(SideMenuItemDataModel dataModel) {

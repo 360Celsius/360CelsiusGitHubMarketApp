@@ -49,6 +49,12 @@ public class StockDataPullService extends IntentService {
                 if (status != null && status.getCode() == 200)
                     helper.bulkInsertMaterialsQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getMaterialsResponce));
 
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction(GET_QOUTES_DATA);
+                broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_MATERIAL_KEY);
+                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
+                sendBroadcast(broadcastIntent);
+
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -60,6 +66,12 @@ public class StockDataPullService extends IntentService {
                 Status status = jSONparser.getStatusFromJson(getGoodsResponce);
                 if (status != null && status.getCode() == 200)
                     helper.bulkInsertGoodsQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getGoodsResponce));
+
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction(GET_QOUTES_DATA);
+                broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_GOODS_KEY);
+                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
+                sendBroadcast(broadcastIntent);
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -71,6 +83,12 @@ public class StockDataPullService extends IntentService {
                 Status status = jSONparser.getStatusFromJson(getServicesResponce);
                 if (status != null && status.getCode() == 200)
                     helper.bulkInsertServicesQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getServicesResponce));
+
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction(GET_QOUTES_DATA);
+                broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_SERVICES_KEY);
+                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
+                sendBroadcast(broadcastIntent);
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -82,6 +100,12 @@ public class StockDataPullService extends IntentService {
                 Status status = jSONparser.getStatusFromJson(getFinancialsResponce);
                 if (status != null && status.getCode() == 200)
                     helper.bulkInsertFinancialsQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getFinancialsResponce));
+
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction(GET_QOUTES_DATA);
+                broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_FINANCIALS_KEY);
+                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
+                sendBroadcast(broadcastIntent);
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -93,6 +117,12 @@ public class StockDataPullService extends IntentService {
                 Status status = jSONparser.getStatusFromJson(getHelthCareResponce);
                 if (status != null && status.getCode() == 200)
                     helper.bulkInsertHealthCareQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getHelthCareResponce));
+
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction(GET_QOUTES_DATA);
+                broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_HEALTHCARE_KEY);
+                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
+                sendBroadcast(broadcastIntent);
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -104,6 +134,12 @@ public class StockDataPullService extends IntentService {
                 Status status = jSONparser.getStatusFromJson(getOilandGasResponce);
                 if (status != null && status.getCode() == 200)
                     helper.bulkInsertOilAndGasQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getOilandGasResponce));
+
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction(GET_QOUTES_DATA);
+                broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_OILANDGAS_KEY);
+                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
+                sendBroadcast(broadcastIntent);
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -115,6 +151,12 @@ public class StockDataPullService extends IntentService {
                 Status status = jSONparser.getStatusFromJson(getTechnologyResponce);
                 if (status != null && status.getCode() == 200)
                     helper.bulkInsertTechnologyQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getTechnologyResponce));
+
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction(GET_QOUTES_DATA);
+                broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_TECHNOLOGY_KEY);
+                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
+                sendBroadcast(broadcastIntent);
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -126,6 +168,12 @@ public class StockDataPullService extends IntentService {
                 Status status = jSONparser.getStatusFromJson(getUtilitiesResponce);
                 if (status != null && status.getCode() == 200)
                     helper.bulkInsertUtilitiesQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getUtilitiesResponce));
+
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction(GET_QOUTES_DATA);
+                broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_UTILITIES_KEY);
+                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
+                sendBroadcast(broadcastIntent);
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -137,6 +185,12 @@ public class StockDataPullService extends IntentService {
                 Status status = jSONparser.getStatusFromJson(getIndastrialResponce);
                 if (status != null && status.getCode() == 200)
                     helper.bulkInsertIndustrialQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getIndastrialResponce));
+
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction(GET_QOUTES_DATA);
+                broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_INDUSTRIAL_KEY);
+                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
+                sendBroadcast(broadcastIntent);
             }catch (Exception e){
                 e.printStackTrace();
             }

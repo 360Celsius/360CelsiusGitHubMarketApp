@@ -11,11 +11,13 @@ public class SideMenuItemDataModel {
     String categoryName;
     int categoryImage;
     int color;
+    int categoryID;
 
-    public SideMenuItemDataModel(String categoryName, int categoryImage,int color) {
+    public SideMenuItemDataModel(String categoryName, int categoryImage,int color,int categoryID) {
         this.categoryName = categoryName;
         this.categoryImage = categoryImage;
         this.color = color;
+        this.categoryID = categoryID;
     }
 
     public String getCategoryName() {
@@ -40,5 +42,13 @@ public class SideMenuItemDataModel {
 
     public void setColor(int color) {
         this.color = color;
+    }
+
+    public int getCategoryID() {
+        return categoryID;
+    }
+
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
     }
 }
