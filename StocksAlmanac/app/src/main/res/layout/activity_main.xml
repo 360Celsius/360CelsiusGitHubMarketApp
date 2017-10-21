@@ -5,10 +5,43 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/main_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/view1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="TEST" />
+
+        <TextView
+            android:id="@+id/view2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view1"
+            android:text="TEST 2" />
+
+        <TextView
+            android:id="@+id/view3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/view2"
+            android:text="TEST 3" />
+
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/toolbar_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -50,7 +83,7 @@
             android:id="@+id/side_menu_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:scrollbars="none"/>
 
         <View
             android:id="@+id/shadow"
@@ -62,36 +95,6 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/mainView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <TextView
-            android:id="@+id/view1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="TEST" />
-
-        <TextView
-            android:id="@+id/view2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/view1"
-            android:text="TEST 2" />
-
-        <TextView
-            android:id="@+id/view3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/view2"
-            android:text="TEST 3" />
-
-    </RelativeLayout>
 
 
 </android.support.v4.widget.DrawerLayout>

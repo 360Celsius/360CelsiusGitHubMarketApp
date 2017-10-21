@@ -5,23 +5,20 @@ import android.os.Bundle;
 import android.graphics.Color;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.a360.celsius.stocksalmanac.datamodel.SideMenuItemDataModel;
 import com.a360.celsius.stocksalmanac.listadapter.SideMenuListCustomAdapter;
 
 import java.util.ArrayList;
 
-public class TheOnlyActivity extends BaseActivity {
+public class LiveActivity extends BaseActivity {
 
 
 
@@ -32,6 +29,8 @@ public class TheOnlyActivity extends BaseActivity {
 
     private ArrayList<SideMenuItemDataModel> dataModels;
     private ListView listView;
+    private View sideMenuShadow;
+    private RelativeLayout mainViewl;
 
 
     private static SideMenuListCustomAdapter adapter;
@@ -43,7 +42,10 @@ public class TheOnlyActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawerLayout = (DrawerLayout) findViewById(R.id.navigation_drawer);
-        mainView = (RelativeLayout) findViewById(R.id.mainView);
+        mainView = (RelativeLayout) findViewById(R.id.main_view);
+        sideMenuShadow = (View) findViewById(R.id.shadow);
+        mainView = (RelativeLayout) findViewById(R.id.main_view);
+
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -103,10 +105,20 @@ public class TheOnlyActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 SideMenuItemDataModel dataModel= dataModels.get(position);
+                setSideMenuSeperatorColor(dataModel);
+                setMainViewColor(dataModel);
 
             }
         });
 
+    }
+
+    private void setMainViewColor(SideMenuItemDataModel dataModel) {
+        mainView.setBackgroundColor(dataModel.getColor());
+    }
+
+    private void setSideMenuSeperatorColor(SideMenuItemDataModel dataModel) {
+        sideMenuShadow.setBackgroundColor(dataModel.getColor());
     }
 
 
