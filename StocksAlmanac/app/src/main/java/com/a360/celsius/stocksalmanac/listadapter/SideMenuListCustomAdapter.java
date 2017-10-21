@@ -1,6 +1,7 @@
 package com.a360.celsius.stocksalmanac.listadapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.a360.celsius.stocksalmanac.R;
@@ -32,6 +34,7 @@ public class SideMenuListCustomAdapter extends ArrayAdapter<SideMenuItemDataMode
     private static class ViewHolder {
         TextView txtName;
         ImageView info;
+        RelativeLayout rowWrapper;
     }
 
     public SideMenuListCustomAdapter(ArrayList<SideMenuItemDataModel> data, Context context) {
@@ -62,7 +65,7 @@ public class SideMenuListCustomAdapter extends ArrayAdapter<SideMenuItemDataMode
             convertView = inflater.inflate(R.layout.side_menu_row_item, parent, false);
             viewHolder.txtName = (TextView) convertView.findViewById(R.id.row_item_name);
             viewHolder.info = (ImageView) convertView.findViewById(R.id.row_item_image);
-
+            viewHolder.rowWrapper = (RelativeLayout)  convertView.findViewById(R.id.row_wrapper);
             result=convertView;
 
             convertView.setTag(viewHolder);
@@ -78,6 +81,7 @@ public class SideMenuListCustomAdapter extends ArrayAdapter<SideMenuItemDataMode
 
         viewHolder.txtName.setText(dataModel.getCategoryName());
         viewHolder.info.setImageResource (dataModel.getCategoryImage());
+        viewHolder.rowWrapper.setBackgroundColor(dataModel.getColor());
         viewHolder.info.setOnClickListener(this);
         viewHolder.info.setTag(position);
         // Return the completed view to render on screen

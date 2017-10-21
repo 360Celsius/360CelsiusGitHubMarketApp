@@ -21,17 +21,17 @@ import com.a360.celsius.stocksalmanac.listadapter.SideMenuListCustomAdapter;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class TheOnlyActivity extends BaseActivity {
 
 
 
-    ActionBarDrawerToggle actionBarDrawerToggle;
-    DrawerLayout drawerLayout;
-    RelativeLayout mainView;
-    Toolbar toolbar;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
+    private DrawerLayout drawerLayout;
+    private RelativeLayout mainView;
+    private Toolbar toolbar;
 
-    ArrayList<SideMenuItemDataModel> dataModels;
-    ListView listView;
+    private ArrayList<SideMenuItemDataModel> dataModels;
+    private ListView listView;
 
 
     private static SideMenuListCustomAdapter adapter;
@@ -85,15 +85,15 @@ public class MainActivity extends AppCompatActivity {
 
         dataModels= new ArrayList<>();
 
-        dataModels.add(new SideMenuItemDataModel("Financials", R.drawable.financials));
-        dataModels.add(new SideMenuItemDataModel("Goods", R.drawable.goods));
-        dataModels.add(new SideMenuItemDataModel("Health Care", R.drawable.healthcare));
-        dataModels.add(new SideMenuItemDataModel("Industrial", R.drawable.industrial));
-        dataModels.add(new SideMenuItemDataModel("Materials", R.drawable.materials));
-        dataModels.add(new SideMenuItemDataModel("Oil & Gas", R.drawable.oilandgas));
-        dataModels.add(new SideMenuItemDataModel("Services", R.drawable.services));
-        dataModels.add(new SideMenuItemDataModel("Technology", R.drawable.technology));
-        dataModels.add(new SideMenuItemDataModel("Utilities", R.drawable.utilities));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_financials), R.drawable.financials,getResources().getColor(R.color.sliding_menu_financials_bg)));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_goods), R.drawable.goods,getResources().getColor(R.color.sliding_menu_goods_bg)));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_healthcare), R.drawable.healthcare,getResources().getColor(R.color.sliding_menu_healthcare_bg)));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_industrial), R.drawable.industrial,getResources().getColor(R.color.sliding_menu_industrial_bg)));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_materials), R.drawable.materials,getResources().getColor(R.color.sliding_menu_materials_bg)));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_oilandgas), R.drawable.oilandgas,getResources().getColor(R.color.sliding_menu_oilandgas_bg)));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_services), R.drawable.services,getResources().getColor(R.color.sliding_menu_services_bg)));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_technology), R.drawable.technology,getResources().getColor(R.color.sliding_menu_technology_bg)));
+        dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_utilities), R.drawable.utilities,getResources().getColor(R.color.sliding_menu_utilities_bg)));
 
         adapter= new SideMenuListCustomAdapter(dataModels,getApplicationContext());
 

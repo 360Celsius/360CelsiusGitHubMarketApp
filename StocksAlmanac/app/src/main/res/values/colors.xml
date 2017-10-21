@@ -6,4 +6,19 @@
 
     <color name="tool_bar_color">#292F3B</color>
     <color name="sliding_menu_bg_color">#292F3B</color>
+    <color name="sliding_menu_row_text_color">#FFFFFF</color>
+    <color name="sliding_menu_row_seperator_color">#101818</color>
+    <color name="sliding_menu_seperator_color">#101818</color>
+
+    <color name="sliding_menu_financials_bg">#FC5830</color>
+    <color name="sliding_menu_goods_bg">#FDC02F</color>
+    <color name="sliding_menu_healthcare_bg">#f57f17</color>
+    <color name="sliding_menu_industrial_bg">#8CC152</color>
+    <color name="sliding_menu_materials_bg">#159588</color>
+    <color name="sliding_menu_oilandgas_bg">#1EAAF1</color>
+    <color name="sliding_menu_services_bg">#4054B2</color>
+    <color name="sliding_menu_technology_bg">#9B2FAE</color>
+    <color name="sliding_menu_utilities_bg">#F1453D</color>
+
+
 </resources>

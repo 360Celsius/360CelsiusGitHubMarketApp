@@ -37,7 +37,7 @@
 
     <RelativeLayout
         android:id="@+id/left_drawer"
-        android:layout_width="100dp"
+        android:layout_width="90dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/sliding_menu_bg_color"
@@ -57,7 +57,7 @@
             android:layout_width="3dp"
             android:layout_alignParentRight="true"
             android:layout_height="match_parent"
-            android:background="#101818"></View>
+            android:background="@color/sliding_menu_seperator_color"></View>
 
 
     </RelativeLayout>

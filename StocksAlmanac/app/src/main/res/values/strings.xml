@@ -1195,4 +1195,14 @@
     </string-array>
 
 
+    <string name="side_menu_financials">Financials</string>
+    <string name="side_menu_goods">Goods</string>
+    <string name="side_menu_healthcare">Health Care</string>
+    <string name="side_menu_industrial">Industrial</string>
+    <string name="side_menu_materials">Materials</string>
+    <string name="side_menu_oilandgas">Oil Gas</string>
+    <string name="side_menu_services">Services</string>
+    <string name="side_menu_technology">Technology</string>
+    <string name="side_menu_utilities">Utilities</string>
+
 </resources>
