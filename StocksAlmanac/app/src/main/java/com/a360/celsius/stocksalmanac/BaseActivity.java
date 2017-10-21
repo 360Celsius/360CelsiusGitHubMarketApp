@@ -5,13 +5,14 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.a360.celsius.stocksalmanac.dbhelper.DatabaseHelper;
+import com.a360.celsius.stocksalmanac.interfaces.DBhelperInterface;
 
 
 /**
  * Created by dennisshar on 13/10/2017.
  */
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends AppCompatActivity implements DBhelperInterface{
 
     public static DatabaseHelper helper = null;
 
@@ -31,5 +32,10 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+    }
+
+    @Override
+    public DatabaseHelper getDBhelper() {
+        return helper;
     }
 }
