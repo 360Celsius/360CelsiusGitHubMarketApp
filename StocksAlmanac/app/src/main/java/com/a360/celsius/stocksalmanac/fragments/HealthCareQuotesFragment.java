@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.a360.celsius.stocksalmanac.JSONobj.Results;
 import com.a360.celsius.stocksalmanac.R;
 import com.a360.celsius.stocksalmanac.interfaces.DBhelperInterface;
 
@@ -18,6 +19,7 @@ import com.a360.celsius.stocksalmanac.interfaces.DBhelperInterface;
 public class HealthCareQuotesFragment extends Fragment {
 
     private DBhelperInterface mCallback;
+    private Results results;
 
     @Nullable
     @Override
@@ -31,6 +33,6 @@ public class HealthCareQuotesFragment extends Fragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         mCallback = (DBhelperInterface) activity;
-
+        results = mCallback.getDBhelper().getHealthCAreData();
     }
 }

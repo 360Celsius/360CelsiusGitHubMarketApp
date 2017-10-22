@@ -2,10 +2,14 @@ package com.a360.celsius.stocksalmanac.dbhelper;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.a360.celsius.stocksalmanac.JSONobj.QuoteData;
 import com.a360.celsius.stocksalmanac.JSONobj.Results;
+
+import java.util.ArrayList;
 
 /**
  * Created by dennisshar on 13/10/2017.
@@ -161,6 +165,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public Results getMaterialsData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE, null);
+
+        Results resulteList = new Results();
+        ArrayList<QuoteData> quoteDataList = new ArrayList<>();
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    QuoteData quoteData = new QuoteData();
+                    quoteData.setSymbol(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.MaterialsQuotesDataTableContents.COLUMN_NAME_SYMBOL)));
+                    quoteData.setExchange(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.MaterialsQuotesDataTableContents.COLUMN_NAME_EXCHANGE)));
+                    quoteData.setName(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.MaterialsQuotesDataTableContents.COLUMN_NAME_NAME)));
+                    quoteData.setDayCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.MaterialsQuotesDataTableContents.COLUMN_NAME_DAYCODE)));
+                    quoteData.setServerTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.MaterialsQuotesDataTableContents.COLUMN_NAME_SERVERTIMESTAMP)));
+                    quoteData.setMode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.MaterialsQuotesDataTableContents.COLUMN_NAME_MODE)));
+                    quoteData.setLastPrice(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.MaterialsQuotesDataTableContents.COLUMN_NAME_LASTPRICE)));
+                    quoteData.setTradeTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.MaterialsQuotesDataTableContents.COLUMN_NAME_TRADETIMESTAMP)));
+                    quoteData.setNetChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.MaterialsQuotesDataTableContents.COLUMN_NAME_NETCHANGE)));
+                    quoteData.setPercentChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.MaterialsQuotesDataTableContents.COLUMN_NAME_PERSENTCHANGE)));
+                    quoteData.setUnitCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.MaterialsQuotesDataTableContents.COLUMN_NAME_UNITCODE)));
+                    quoteData.setOpen(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.MaterialsQuotesDataTableContents.COLUMN_NAME_OPEN)));
+                    quoteData.setHigh(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.MaterialsQuotesDataTableContents.COLUMN_NAME_HIGH)));
+                    quoteData.setLow(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.MaterialsQuotesDataTableContents.COLUMN_NAME_LOW)));
+                    quoteData.setClose(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.MaterialsQuotesDataTableContents.COLUMN_NAME_CLOSE)));
+                    quoteData.setFlag(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.MaterialsQuotesDataTableContents.COLUMN_NAME_FLAG)));
+                    quoteData.setVolume(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.MaterialsQuotesDataTableContents.COLUMN_NAME_VOLUME)));
+
+                    quoteDataList.add(quoteData);
+                } while (cursor.moveToNext());
+
+                resulteList.setQuoteData(quoteDataList);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+        return resulteList;
+    }
 
     //=============================GOODS========================================
 
@@ -251,7 +298,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public Results getGoodsData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE, null);
 
+        Results resulteList = new Results();
+        ArrayList<QuoteData> quoteDataList = new ArrayList<>();
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    QuoteData quoteData = new QuoteData();
+                    quoteData.setSymbol(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.GoodsQuotesDataTableContents.COLUMN_NAME_SYMBOL)));
+                    quoteData.setExchange(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.GoodsQuotesDataTableContents.COLUMN_NAME_EXCHANGE)));
+                    quoteData.setName(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.GoodsQuotesDataTableContents.COLUMN_NAME_NAME)));
+                    quoteData.setDayCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.GoodsQuotesDataTableContents.COLUMN_NAME_DAYCODE)));
+                    quoteData.setServerTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.GoodsQuotesDataTableContents.COLUMN_NAME_SERVERTIMESTAMP)));
+                    quoteData.setMode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.GoodsQuotesDataTableContents.COLUMN_NAME_MODE)));
+                    quoteData.setLastPrice(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.GoodsQuotesDataTableContents.COLUMN_NAME_LASTPRICE)));
+                    quoteData.setTradeTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.GoodsQuotesDataTableContents.COLUMN_NAME_TRADETIMESTAMP)));
+                    quoteData.setNetChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.GoodsQuotesDataTableContents.COLUMN_NAME_NETCHANGE)));
+                    quoteData.setPercentChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.GoodsQuotesDataTableContents.COLUMN_NAME_PERSENTCHANGE)));
+                    quoteData.setUnitCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.GoodsQuotesDataTableContents.COLUMN_NAME_UNITCODE)));
+                    quoteData.setOpen(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.GoodsQuotesDataTableContents.COLUMN_NAME_OPEN)));
+                    quoteData.setHigh(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.GoodsQuotesDataTableContents.COLUMN_NAME_HIGH)));
+                    quoteData.setLow(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.GoodsQuotesDataTableContents.COLUMN_NAME_LOW)));
+                    quoteData.setClose(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.GoodsQuotesDataTableContents.COLUMN_NAME_CLOSE)));
+                    quoteData.setFlag(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.GoodsQuotesDataTableContents.COLUMN_NAME_FLAG)));
+                    quoteData.setVolume(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.GoodsQuotesDataTableContents.COLUMN_NAME_VOLUME)));
+
+                    quoteDataList.add(quoteData);
+                } while (cursor.moveToNext());
+
+                resulteList.setQuoteData(quoteDataList);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+        return resulteList;
+    }
     //=============================SERVICES========================================
 
     public void bulkInsertServicesQuoteDataToQuotesTable(Results results) {
@@ -341,6 +430,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public Results getServicesData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE, null);
+
+        Results resulteList = new Results();
+        ArrayList<QuoteData> quoteDataList = new ArrayList<>();
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    QuoteData quoteData = new QuoteData();
+                    quoteData.setSymbol(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.ServicesQuotesDataTableContents.COLUMN_NAME_SYMBOL)));
+                    quoteData.setExchange(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.ServicesQuotesDataTableContents.COLUMN_NAME_EXCHANGE)));
+                    quoteData.setName(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.ServicesQuotesDataTableContents.COLUMN_NAME_NAME)));
+                    quoteData.setDayCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.ServicesQuotesDataTableContents.COLUMN_NAME_DAYCODE)));
+                    quoteData.setServerTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.ServicesQuotesDataTableContents.COLUMN_NAME_SERVERTIMESTAMP)));
+                    quoteData.setMode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.ServicesQuotesDataTableContents.COLUMN_NAME_MODE)));
+                    quoteData.setLastPrice(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.ServicesQuotesDataTableContents.COLUMN_NAME_LASTPRICE)));
+                    quoteData.setTradeTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.ServicesQuotesDataTableContents.COLUMN_NAME_TRADETIMESTAMP)));
+                    quoteData.setNetChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.ServicesQuotesDataTableContents.COLUMN_NAME_NETCHANGE)));
+                    quoteData.setPercentChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.ServicesQuotesDataTableContents.COLUMN_NAME_PERSENTCHANGE)));
+                    quoteData.setUnitCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.ServicesQuotesDataTableContents.COLUMN_NAME_UNITCODE)));
+                    quoteData.setOpen(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.ServicesQuotesDataTableContents.COLUMN_NAME_OPEN)));
+                    quoteData.setHigh(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.ServicesQuotesDataTableContents.COLUMN_NAME_HIGH)));
+                    quoteData.setLow(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.ServicesQuotesDataTableContents.COLUMN_NAME_LOW)));
+                    quoteData.setClose(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.ServicesQuotesDataTableContents.COLUMN_NAME_CLOSE)));
+                    quoteData.setFlag(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.ServicesQuotesDataTableContents.COLUMN_NAME_FLAG)));
+                    quoteData.setVolume(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.ServicesQuotesDataTableContents.COLUMN_NAME_VOLUME)));
+
+                    quoteDataList.add(quoteData);
+                } while (cursor.moveToNext());
+
+                resulteList.setQuoteData(quoteDataList);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+        return resulteList;
+    }
     //=============================FINANCIALS========================================
 
     public void bulkInsertFinancialsQuoteDataToQuotesTable(Results results) {
@@ -430,7 +562,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public Results getFinancialsData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE, null);
 
+        Results resulteList = new Results();
+        ArrayList<QuoteData> quoteDataList = new ArrayList<>();
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    QuoteData quoteData = new QuoteData();
+                    quoteData.setSymbol(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.FinancialsQuotesDataTableContents.COLUMN_NAME_SYMBOL)));
+                    quoteData.setExchange(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.FinancialsQuotesDataTableContents.COLUMN_NAME_EXCHANGE)));
+                    quoteData.setName(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.FinancialsQuotesDataTableContents.COLUMN_NAME_NAME)));
+                    quoteData.setDayCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.FinancialsQuotesDataTableContents.COLUMN_NAME_DAYCODE)));
+                    quoteData.setServerTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.FinancialsQuotesDataTableContents.COLUMN_NAME_SERVERTIMESTAMP)));
+                    quoteData.setMode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.FinancialsQuotesDataTableContents.COLUMN_NAME_MODE)));
+                    quoteData.setLastPrice(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.FinancialsQuotesDataTableContents.COLUMN_NAME_LASTPRICE)));
+                    quoteData.setTradeTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.FinancialsQuotesDataTableContents.COLUMN_NAME_TRADETIMESTAMP)));
+                    quoteData.setNetChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.FinancialsQuotesDataTableContents.COLUMN_NAME_NETCHANGE)));
+                    quoteData.setPercentChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.FinancialsQuotesDataTableContents.COLUMN_NAME_PERSENTCHANGE)));
+                    quoteData.setUnitCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.FinancialsQuotesDataTableContents.COLUMN_NAME_UNITCODE)));
+                    quoteData.setOpen(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.FinancialsQuotesDataTableContents.COLUMN_NAME_OPEN)));
+                    quoteData.setHigh(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.FinancialsQuotesDataTableContents.COLUMN_NAME_HIGH)));
+                    quoteData.setLow(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.FinancialsQuotesDataTableContents.COLUMN_NAME_LOW)));
+                    quoteData.setClose(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.FinancialsQuotesDataTableContents.COLUMN_NAME_CLOSE)));
+                    quoteData.setFlag(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.FinancialsQuotesDataTableContents.COLUMN_NAME_FLAG)));
+                    quoteData.setVolume(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.FinancialsQuotesDataTableContents.COLUMN_NAME_VOLUME)));
+
+                    quoteDataList.add(quoteData);
+                } while (cursor.moveToNext());
+
+                resulteList.setQuoteData(quoteDataList);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+        return resulteList;
+    }
     //=============================HEALTHCARE========================================
 
     public void bulkInsertHealthCareQuoteDataToQuotesTable(Results results) {
@@ -521,6 +695,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public Results getHealthCAreData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE, null);
+
+        Results resulteList = new Results();
+        ArrayList<QuoteData> quoteDataList = new ArrayList<>();
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    QuoteData quoteData = new QuoteData();
+                    quoteData.setSymbol(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.HealthCareQuotesDataTableContents.COLUMN_NAME_SYMBOL)));
+                    quoteData.setExchange(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.HealthCareQuotesDataTableContents.COLUMN_NAME_EXCHANGE)));
+                    quoteData.setName(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.HealthCareQuotesDataTableContents.COLUMN_NAME_NAME)));
+                    quoteData.setDayCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.HealthCareQuotesDataTableContents.COLUMN_NAME_DAYCODE)));
+                    quoteData.setServerTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.HealthCareQuotesDataTableContents.COLUMN_NAME_SERVERTIMESTAMP)));
+                    quoteData.setMode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.HealthCareQuotesDataTableContents.COLUMN_NAME_MODE)));
+                    quoteData.setLastPrice(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.HealthCareQuotesDataTableContents.COLUMN_NAME_LASTPRICE)));
+                    quoteData.setTradeTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.HealthCareQuotesDataTableContents.COLUMN_NAME_TRADETIMESTAMP)));
+                    quoteData.setNetChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.HealthCareQuotesDataTableContents.COLUMN_NAME_NETCHANGE)));
+                    quoteData.setPercentChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.HealthCareQuotesDataTableContents.COLUMN_NAME_PERSENTCHANGE)));
+                    quoteData.setUnitCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.HealthCareQuotesDataTableContents.COLUMN_NAME_UNITCODE)));
+                    quoteData.setOpen(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.HealthCareQuotesDataTableContents.COLUMN_NAME_OPEN)));
+                    quoteData.setHigh(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.HealthCareQuotesDataTableContents.COLUMN_NAME_HIGH)));
+                    quoteData.setLow(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.HealthCareQuotesDataTableContents.COLUMN_NAME_LOW)));
+                    quoteData.setClose(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.HealthCareQuotesDataTableContents.COLUMN_NAME_CLOSE)));
+                    quoteData.setFlag(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.HealthCareQuotesDataTableContents.COLUMN_NAME_FLAG)));
+                    quoteData.setVolume(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.HealthCareQuotesDataTableContents.COLUMN_NAME_VOLUME)));
+
+                    quoteDataList.add(quoteData);
+                } while (cursor.moveToNext());
+
+                resulteList.setQuoteData(quoteDataList);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+        return resulteList;
+    }
     //=============================OILANDGAS========================================
 
     public void bulkInsertOilAndGasQuoteDataToQuotesTable(Results results) {
@@ -610,6 +827,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public Results getOilANdGasData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE, null);
+
+        Results resulteList = new Results();
+        ArrayList<QuoteData> quoteDataList = new ArrayList<>();
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    QuoteData quoteData = new QuoteData();
+                    quoteData.setSymbol(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.OilANdGasQuotesDataTableContents.COLUMN_NAME_SYMBOL)));
+                    quoteData.setExchange(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.OilANdGasQuotesDataTableContents.COLUMN_NAME_EXCHANGE)));
+                    quoteData.setName(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.OilANdGasQuotesDataTableContents.COLUMN_NAME_NAME)));
+                    quoteData.setDayCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.OilANdGasQuotesDataTableContents.COLUMN_NAME_DAYCODE)));
+                    quoteData.setServerTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.OilANdGasQuotesDataTableContents.COLUMN_NAME_SERVERTIMESTAMP)));
+                    quoteData.setMode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.OilANdGasQuotesDataTableContents.COLUMN_NAME_MODE)));
+                    quoteData.setLastPrice(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.OilANdGasQuotesDataTableContents.COLUMN_NAME_LASTPRICE)));
+                    quoteData.setTradeTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.OilANdGasQuotesDataTableContents.COLUMN_NAME_TRADETIMESTAMP)));
+                    quoteData.setNetChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.OilANdGasQuotesDataTableContents.COLUMN_NAME_NETCHANGE)));
+                    quoteData.setPercentChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.OilANdGasQuotesDataTableContents.COLUMN_NAME_PERSENTCHANGE)));
+                    quoteData.setUnitCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.OilANdGasQuotesDataTableContents.COLUMN_NAME_UNITCODE)));
+                    quoteData.setOpen(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.OilANdGasQuotesDataTableContents.COLUMN_NAME_OPEN)));
+                    quoteData.setHigh(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.OilANdGasQuotesDataTableContents.COLUMN_NAME_HIGH)));
+                    quoteData.setLow(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.OilANdGasQuotesDataTableContents.COLUMN_NAME_LOW)));
+                    quoteData.setClose(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.OilANdGasQuotesDataTableContents.COLUMN_NAME_CLOSE)));
+                    quoteData.setFlag(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.OilANdGasQuotesDataTableContents.COLUMN_NAME_FLAG)));
+                    quoteData.setVolume(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.OilANdGasQuotesDataTableContents.COLUMN_NAME_VOLUME)));
+
+                    quoteDataList.add(quoteData);
+                } while (cursor.moveToNext());
+
+                resulteList.setQuoteData(quoteDataList);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+        return resulteList;
+    }
     //=============================TECHNOLOGY========================================
 
     public void bulkInsertTechnologyQuoteDataToQuotesTable(Results results) {
@@ -699,6 +959,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public Results getTechnologyData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE, null);
+
+        Results resulteList = new Results();
+        ArrayList<QuoteData> quoteDataList = new ArrayList<>();
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    QuoteData quoteData = new QuoteData();
+                    quoteData.setSymbol(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.TechnologyQuotesDataTableContents.COLUMN_NAME_SYMBOL)));
+                    quoteData.setExchange(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.TechnologyQuotesDataTableContents.COLUMN_NAME_EXCHANGE)));
+                    quoteData.setName(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.TechnologyQuotesDataTableContents.COLUMN_NAME_NAME)));
+                    quoteData.setDayCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.TechnologyQuotesDataTableContents.COLUMN_NAME_DAYCODE)));
+                    quoteData.setServerTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.TechnologyQuotesDataTableContents.COLUMN_NAME_SERVERTIMESTAMP)));
+                    quoteData.setMode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.TechnologyQuotesDataTableContents.COLUMN_NAME_MODE)));
+                    quoteData.setLastPrice(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.TechnologyQuotesDataTableContents.COLUMN_NAME_LASTPRICE)));
+                    quoteData.setTradeTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.TechnologyQuotesDataTableContents.COLUMN_NAME_TRADETIMESTAMP)));
+                    quoteData.setNetChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.TechnologyQuotesDataTableContents.COLUMN_NAME_NETCHANGE)));
+                    quoteData.setPercentChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.TechnologyQuotesDataTableContents.COLUMN_NAME_PERSENTCHANGE)));
+                    quoteData.setUnitCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.TechnologyQuotesDataTableContents.COLUMN_NAME_UNITCODE)));
+                    quoteData.setOpen(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.TechnologyQuotesDataTableContents.COLUMN_NAME_OPEN)));
+                    quoteData.setHigh(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.TechnologyQuotesDataTableContents.COLUMN_NAME_HIGH)));
+                    quoteData.setLow(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.TechnologyQuotesDataTableContents.COLUMN_NAME_LOW)));
+                    quoteData.setClose(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.TechnologyQuotesDataTableContents.COLUMN_NAME_CLOSE)));
+                    quoteData.setFlag(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.TechnologyQuotesDataTableContents.COLUMN_NAME_FLAG)));
+                    quoteData.setVolume(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.TechnologyQuotesDataTableContents.COLUMN_NAME_VOLUME)));
+
+                    quoteDataList.add(quoteData);
+                } while (cursor.moveToNext());
+
+                resulteList.setQuoteData(quoteDataList);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+        return resulteList;
+    }
     //=============================UTILITIES========================================
 
     public void bulkInsertUtilitiesQuoteDataToQuotesTable(Results results) {
@@ -788,6 +1091,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public Results getUtilitiesData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE, null);
+
+        Results resulteList = new Results();
+        ArrayList<QuoteData> quoteDataList = new ArrayList<>();
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    QuoteData quoteData = new QuoteData();
+                    quoteData.setSymbol(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.UtilitiesQuotesDataTableContents.COLUMN_NAME_SYMBOL)));
+                    quoteData.setExchange(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.UtilitiesQuotesDataTableContents.COLUMN_NAME_EXCHANGE)));
+                    quoteData.setName(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.UtilitiesQuotesDataTableContents.COLUMN_NAME_NAME)));
+                    quoteData.setDayCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.UtilitiesQuotesDataTableContents.COLUMN_NAME_DAYCODE)));
+                    quoteData.setServerTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.UtilitiesQuotesDataTableContents.COLUMN_NAME_SERVERTIMESTAMP)));
+                    quoteData.setMode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.UtilitiesQuotesDataTableContents.COLUMN_NAME_MODE)));
+                    quoteData.setLastPrice(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.UtilitiesQuotesDataTableContents.COLUMN_NAME_LASTPRICE)));
+                    quoteData.setTradeTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.UtilitiesQuotesDataTableContents.COLUMN_NAME_TRADETIMESTAMP)));
+                    quoteData.setNetChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.UtilitiesQuotesDataTableContents.COLUMN_NAME_NETCHANGE)));
+                    quoteData.setPercentChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.UtilitiesQuotesDataTableContents.COLUMN_NAME_PERSENTCHANGE)));
+                    quoteData.setUnitCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.UtilitiesQuotesDataTableContents.COLUMN_NAME_UNITCODE)));
+                    quoteData.setOpen(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.UtilitiesQuotesDataTableContents.COLUMN_NAME_OPEN)));
+                    quoteData.setHigh(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.UtilitiesQuotesDataTableContents.COLUMN_NAME_HIGH)));
+                    quoteData.setLow(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.UtilitiesQuotesDataTableContents.COLUMN_NAME_LOW)));
+                    quoteData.setClose(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.UtilitiesQuotesDataTableContents.COLUMN_NAME_CLOSE)));
+                    quoteData.setFlag(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.UtilitiesQuotesDataTableContents.COLUMN_NAME_FLAG)));
+                    quoteData.setVolume(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.UtilitiesQuotesDataTableContents.COLUMN_NAME_VOLUME)));
+
+                    quoteDataList.add(quoteData);
+                } while (cursor.moveToNext());
+
+                resulteList.setQuoteData(quoteDataList);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+        return resulteList;
+    }
     //=============================INDUSTRIAL========================================
 
     public void bulkInsertIndustrialQuoteDataToQuotesTable(Results results) {
@@ -876,5 +1222,49 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } finally {
             db.endTransaction();
         }
+    }
+
+    public Results getIndustrialData(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE, null);
+
+        Results resulteList = new Results();
+        ArrayList<QuoteData> quoteDataList = new ArrayList<>();
+        try {
+            if (cursor.moveToFirst()) {
+                do {
+                    QuoteData quoteData = new QuoteData();
+                    quoteData.setSymbol(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.IndustrialQuotesDataTableContents.COLUMN_NAME_SYMBOL)));
+                    quoteData.setExchange(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.IndustrialQuotesDataTableContents.COLUMN_NAME_EXCHANGE)));
+                    quoteData.setName(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.IndustrialQuotesDataTableContents.COLUMN_NAME_NAME)));
+                    quoteData.setDayCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.IndustrialQuotesDataTableContents.COLUMN_NAME_DAYCODE)));
+                    quoteData.setServerTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.IndustrialQuotesDataTableContents.COLUMN_NAME_SERVERTIMESTAMP)));
+                    quoteData.setMode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.IndustrialQuotesDataTableContents.COLUMN_NAME_MODE)));
+                    quoteData.setLastPrice(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.IndustrialQuotesDataTableContents.COLUMN_NAME_LASTPRICE)));
+                    quoteData.setTradeTimestamp(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.IndustrialQuotesDataTableContents.COLUMN_NAME_TRADETIMESTAMP)));
+                    quoteData.setNetChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.IndustrialQuotesDataTableContents.COLUMN_NAME_NETCHANGE)));
+                    quoteData.setPercentChange(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.IndustrialQuotesDataTableContents.COLUMN_NAME_PERSENTCHANGE)));
+                    quoteData.setUnitCode(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.IndustrialQuotesDataTableContents.COLUMN_NAME_UNITCODE)));
+                    quoteData.setOpen(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.IndustrialQuotesDataTableContents.COLUMN_NAME_OPEN)));
+                    quoteData.setHigh(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.IndustrialQuotesDataTableContents.COLUMN_NAME_HIGH)));
+                    quoteData.setLow(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.IndustrialQuotesDataTableContents.COLUMN_NAME_LOW)));
+                    quoteData.setClose(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.IndustrialQuotesDataTableContents.COLUMN_NAME_CLOSE)));
+                    quoteData.setFlag(cursor.getString(cursor.getColumnIndex(DatabaseHelperContract.IndustrialQuotesDataTableContents.COLUMN_NAME_FLAG)));
+                    quoteData.setVolume(cursor.getDouble(cursor.getColumnIndex(DatabaseHelperContract.IndustrialQuotesDataTableContents.COLUMN_NAME_VOLUME)));
+
+                    quoteDataList.add(quoteData);
+                } while (cursor.moveToNext());
+
+                resulteList.setQuoteData(quoteDataList);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }finally {
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+        return resulteList;
     }
 }

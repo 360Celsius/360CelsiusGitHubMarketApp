@@ -1,5 +1,6 @@
 package com.a360.celsius.stocksalmanac.dbhelper;
 
+import android.content.ContentUris;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
@@ -70,6 +71,9 @@ public class DatabaseHelperContract {
     public static final String SQL_DELETE_MATERIALS_QUOTES_DATA_TABLE =
             "DROP TABLE IF EXISTS " + MaterialsQuotesDataTableContents.TABLE_NAME;
 
+    public static final String SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE =
+            "SELECT  * FROM " + MaterialsQuotesDataTableContents.TABLE_NAME + " WHERE "+ MaterialsQuotesDataTableContents._ID;
+
     //=============================GOODS========================================
     /* Inner class that defines the table contents */
     public static class GoodsQuotesDataTableContents implements BaseColumns {
@@ -123,6 +127,8 @@ public class DatabaseHelperContract {
     public static final String SQL_DELETE_GOODS_QUOTES_DATA_TABLE =
             "DROP TABLE IF EXISTS " + GoodsQuotesDataTableContents.TABLE_NAME;
 
+    public static final String SQL_SELECT_GOODS_QUOTES_DATA_TABLE =
+            "SELECT  * FROM " + GoodsQuotesDataTableContents.TABLE_NAME + " WHERE "+ GoodsQuotesDataTableContents._ID;
 
     //=============================SERVICES========================================
     /* Inner class that defines the table contents */
@@ -177,6 +183,9 @@ public class DatabaseHelperContract {
     public static final String SQL_DELETE_SERVICES_QUOTES_DATA_TABLE =
             "DROP TABLE IF EXISTS " + ServicesQuotesDataTableContents.TABLE_NAME;
 
+    public static final String SQL_SELECT_SERVICES_QUOTES_DATA_TABLE =
+            "SELECT  * FROM " + ServicesQuotesDataTableContents.TABLE_NAME + " WHERE "+ ServicesQuotesDataTableContents._ID;
+
     //=============================FINANCIALS========================================
     /* Inner class that defines the table contents */
     public static class FinancialsQuotesDataTableContents implements BaseColumns {
@@ -229,6 +238,9 @@ public class DatabaseHelperContract {
 
     public static final String SQL_DELETE_FINANCIALS_QUOTES_DATA_TABLE =
             "DROP TABLE IF EXISTS " + FinancialsQuotesDataTableContents.TABLE_NAME;
+
+    public static final String SQL_SELECT_FINANCIALS_QUOTES_DATA_TABLE =
+            "SELECT  * FROM " + FinancialsQuotesDataTableContents.TABLE_NAME + " WHERE "+ FinancialsQuotesDataTableContents._ID;
 
     //=============================HEALTHCARE========================================
     /* Inner class that defines the table contents */
@@ -283,6 +295,9 @@ public class DatabaseHelperContract {
     public static final String SQL_DELETE_HEALTHCARE_QUOTES_DATA_TABLE =
             "DROP TABLE IF EXISTS " + HealthCareQuotesDataTableContents.TABLE_NAME;
 
+    public static final String SQL_SELECT_HEALTHCARE_QUOTES_DATA_TABLE =
+            "SELECT  * FROM " + HealthCareQuotesDataTableContents.TABLE_NAME + " WHERE "+ HealthCareQuotesDataTableContents._ID;
+
     //=============================OILANDGAS========================================
     /* Inner class that defines the table contents */
     public static class OilANdGasQuotesDataTableContents implements BaseColumns {
@@ -335,6 +350,9 @@ public class DatabaseHelperContract {
 
     public static final String SQL_DELETE_OILANDGAS_QUOTES_DATA_TABLE =
             "DROP TABLE IF EXISTS " + OilANdGasQuotesDataTableContents.TABLE_NAME;
+
+    public static final String SQL_SELECT_OILANDGAS_QUOTES_DATA_TABLE =
+            "SELECT  * FROM " + OilANdGasQuotesDataTableContents.TABLE_NAME + " WHERE "+ OilANdGasQuotesDataTableContents._ID;
 
     //=============================TECHNOLOGY========================================
     /* Inner class that defines the table contents */
@@ -389,6 +407,9 @@ public class DatabaseHelperContract {
     public static final String SQL_DELETE_TECHNOLOGY_QUOTES_DATA_TABLE =
             "DROP TABLE IF EXISTS " + TechnologyQuotesDataTableContents.TABLE_NAME;
 
+    public static final String SQL_SELECT_TECHNOLOGY_QUOTES_DATA_TABLE =
+            "SELECT  * FROM " + TechnologyQuotesDataTableContents.TABLE_NAME + " WHERE "+ TechnologyQuotesDataTableContents._ID;
+
     //=============================UTILITIES========================================
     /* Inner class that defines the table contents */
     public static class UtilitiesQuotesDataTableContents implements BaseColumns {
@@ -442,6 +463,9 @@ public class DatabaseHelperContract {
     public static final String SQL_DELETE_UTILITIES_QUOTES_DATA_TABLE =
             "DROP TABLE IF EXISTS " + UtilitiesQuotesDataTableContents.TABLE_NAME;
 
+    public static final String SQL_SELECT_UTILITIES_QUOTES_DATA_TABLE =
+            "SELECT  * FROM " + UtilitiesQuotesDataTableContents.TABLE_NAME + " WHERE "+ UtilitiesQuotesDataTableContents._ID;
+
     //=============================INDUSTRIAL========================================
     /* Inner class that defines the table contents */
     public static class IndustrialQuotesDataTableContents implements BaseColumns {
@@ -494,4 +518,7 @@ public class DatabaseHelperContract {
 
     public static final String SQL_DELETE_INDUSTRIAL_QUOTES_DATA_TABLE =
             "DROP TABLE IF EXISTS " + IndustrialQuotesDataTableContents.TABLE_NAME;
+
+    public static final String SQL_SELECT_INDUSTRIAL_QUOTES_DATA_TABLE =
+            "SELECT  * FROM " + IndustrialQuotesDataTableContents.TABLE_NAME + " WHERE "+ IndustrialQuotesDataTableContents._ID;
 }
