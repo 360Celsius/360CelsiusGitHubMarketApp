@@ -300,7 +300,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Results getGoodsData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE, null);
+        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_GOODS_QUOTES_DATA_TABLE, null);
 
         Results resulteList = new Results();
         ArrayList<QuoteData> quoteDataList = new ArrayList<>();
@@ -432,7 +432,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Results getServicesData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE, null);
+        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_SERVICES_QUOTES_DATA_TABLE, null);
 
         Results resulteList = new Results();
         ArrayList<QuoteData> quoteDataList = new ArrayList<>();
@@ -564,7 +564,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Results getFinancialsData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE, null);
+        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_FINANCIALS_QUOTES_DATA_TABLE, null);
 
         Results resulteList = new Results();
         ArrayList<QuoteData> quoteDataList = new ArrayList<>();
@@ -697,7 +697,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Results getHealthCAreData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE, null);
+        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_HEALTHCARE_QUOTES_DATA_TABLE, null);
 
         Results resulteList = new Results();
         ArrayList<QuoteData> quoteDataList = new ArrayList<>();
@@ -829,7 +829,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Results getOilANdGasData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE, null);
+        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_OILANDGAS_QUOTES_DATA_TABLE, null);
 
         Results resulteList = new Results();
         ArrayList<QuoteData> quoteDataList = new ArrayList<>();
@@ -961,7 +961,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Results getTechnologyData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE, null);
+        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_TECHNOLOGY_QUOTES_DATA_TABLE, null);
 
         Results resulteList = new Results();
         ArrayList<QuoteData> quoteDataList = new ArrayList<>();
@@ -1093,7 +1093,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Results getUtilitiesData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE, null);
+        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_UTILITIES_QUOTES_DATA_TABLE, null);
 
         Results resulteList = new Results();
         ArrayList<QuoteData> quoteDataList = new ArrayList<>();
@@ -1226,7 +1226,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Results getIndustrialData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_MATERIALS_QUOTES_DATA_TABLE, null);
+        Cursor cursor = db.rawQuery(DatabaseHelperContract.SQL_SELECT_INDUSTRIAL_QUOTES_DATA_TABLE, null);
 
         Results resulteList = new Results();
         ArrayList<QuoteData> quoteDataList = new ArrayList<>();

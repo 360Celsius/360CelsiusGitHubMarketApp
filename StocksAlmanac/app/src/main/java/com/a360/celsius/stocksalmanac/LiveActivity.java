@@ -90,8 +90,6 @@ public class LiveActivity extends BaseActivity {
 
         dataModels= new ArrayList<>();
 
-        dataModels= new ArrayList<>();
-
         dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_financials), R.drawable.financials,getResources().getColor(R.color.sliding_menu_financials_bg),1));
         dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_goods), R.drawable.goods,getResources().getColor(R.color.sliding_menu_goods_bg),2));
         dataModels.add(new SideMenuItemDataModel(getResources().getString(R.string.side_menu_healthcare), R.drawable.healthcare,getResources().getColor(R.color.sliding_menu_healthcare_bg),3));

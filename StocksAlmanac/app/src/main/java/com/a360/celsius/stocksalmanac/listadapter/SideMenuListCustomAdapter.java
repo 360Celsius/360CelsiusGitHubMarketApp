@@ -56,7 +56,7 @@ public class SideMenuListCustomAdapter extends ArrayAdapter<SideMenuItemDataMode
         // Check if an existing view is being reused, otherwise inflate the view
         ViewHolder viewHolder; // view lookup cache stored in tag
 
-        final View result;
+        //final View result;
 
         if (convertView == null) {
 
@@ -66,12 +66,12 @@ public class SideMenuListCustomAdapter extends ArrayAdapter<SideMenuItemDataMode
             viewHolder.txtName = (TextView) convertView.findViewById(R.id.row_item_name);
             viewHolder.info = (ImageView) convertView.findViewById(R.id.row_item_image);
             viewHolder.rowWrapper = (RelativeLayout)  convertView.findViewById(R.id.row_wrapper);
-            result=convertView;
+            //result=convertView;
 
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
-            result=convertView;
+            //result=convertView;
         }
 
 

@@ -9,4 +9,10 @@
         android:layout_gravity="center_vertical"
         android:text="technology fragment"/>
 
+    <ListView
+        android:id="@+id/technology_data_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"/>
+
 </LinearLayout>
