@@ -35,8 +35,11 @@ public class FinancialsQuotesFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_financials_quotes, container, false);
 
+        // Inflate the layout for this fragment
+        container.clearDisappearingChildren();
+
         listView=(ListView)view.findViewById(R.id.financials_data_list);
-        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.financials_swipe_refresh_layout);
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -50,7 +53,7 @@ public class FinancialsQuotesFragment extends BaseFragment {
                 // ...the data has come back, add new items to your adapter...
                // adapter.addAll(...);
                 // Now we call setRefreshing(false) to signal refresh has finished
-                //mSwipeRefreshLayout.setRefreshing(false);
+                mSwipeRefreshLayout.setRefreshing(false);
             }
         });
 
@@ -86,9 +89,7 @@ public class FinancialsQuotesFragment extends BaseFragment {
         }
 
         adapter= new QoutesDataLIstCustomAdapter(dataModels,getContext());
-
         listView.setAdapter(adapter);
-
-
     }
+
 }
