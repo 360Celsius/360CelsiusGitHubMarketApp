@@ -50,9 +50,7 @@ public class StockDataPullService extends IntentService {
                     helper.bulkInsertMaterialsQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getMaterialsResponce));
 
                 Intent broadcastIntent = new Intent();
-                broadcastIntent.setAction(GET_QOUTES_DATA);
                 broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_MATERIAL_KEY);
-                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
                 sendBroadcast(broadcastIntent);
 
             }catch (Exception e){
@@ -70,8 +68,8 @@ public class StockDataPullService extends IntentService {
                 Intent broadcastIntent = new Intent();
                 broadcastIntent.setAction(GET_QOUTES_DATA);
                 broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_GOODS_KEY);
-                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
                 sendBroadcast(broadcastIntent);
+
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -87,8 +85,8 @@ public class StockDataPullService extends IntentService {
                 Intent broadcastIntent = new Intent();
                 broadcastIntent.setAction(GET_QOUTES_DATA);
                 broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_SERVICES_KEY);
-                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
                 sendBroadcast(broadcastIntent);
+
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -104,8 +102,8 @@ public class StockDataPullService extends IntentService {
                 Intent broadcastIntent = new Intent();
                 broadcastIntent.setAction(GET_QOUTES_DATA);
                 broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_FINANCIALS_KEY);
-                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
                 sendBroadcast(broadcastIntent);
+
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -121,8 +119,8 @@ public class StockDataPullService extends IntentService {
                 Intent broadcastIntent = new Intent();
                 broadcastIntent.setAction(GET_QOUTES_DATA);
                 broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_HEALTHCARE_KEY);
-                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
                 sendBroadcast(broadcastIntent);
+
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -138,8 +136,8 @@ public class StockDataPullService extends IntentService {
                 Intent broadcastIntent = new Intent();
                 broadcastIntent.setAction(GET_QOUTES_DATA);
                 broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_OILANDGAS_KEY);
-                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
                 sendBroadcast(broadcastIntent);
+
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -155,8 +153,8 @@ public class StockDataPullService extends IntentService {
                 Intent broadcastIntent = new Intent();
                 broadcastIntent.setAction(GET_QOUTES_DATA);
                 broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_TECHNOLOGY_KEY);
-                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
                 sendBroadcast(broadcastIntent);
+
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -172,8 +170,8 @@ public class StockDataPullService extends IntentService {
                 Intent broadcastIntent = new Intent();
                 broadcastIntent.setAction(GET_QOUTES_DATA);
                 broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_UTILITIES_KEY);
-                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
                 sendBroadcast(broadcastIntent);
+
             }catch (Exception e){
                 e.printStackTrace();
             }
@@ -189,8 +187,8 @@ public class StockDataPullService extends IntentService {
                 Intent broadcastIntent = new Intent();
                 broadcastIntent.setAction(GET_QOUTES_DATA);
                 broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_INDUSTRIAL_KEY);
-                //broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_CONTENT_KEY, responce);
                 sendBroadcast(broadcastIntent);
+
             }catch (Exception e){
                 e.printStackTrace();
             }

@@ -88,7 +88,7 @@ public class AlmanacProvider extends ContentProvider {
         return 0;
     }
 
-    public String getTableName(Uri uri) {
+    public static String getTableName(Uri uri) {
         String tableName = null;
 
         switch (mMatcher.match(uri)) {

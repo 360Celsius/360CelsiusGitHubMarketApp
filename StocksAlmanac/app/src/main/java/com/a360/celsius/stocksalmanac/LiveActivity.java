@@ -174,6 +174,7 @@ public class LiveActivity extends BaseActivity {
                 break;
 
         }
+        drawerLayout.closeDrawers();
     }
 
     private void setMainViewColor(SideMenuItemDataModel dataModel) {

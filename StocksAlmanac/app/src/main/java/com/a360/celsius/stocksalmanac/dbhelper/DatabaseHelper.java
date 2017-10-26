@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
 
 import com.a360.celsius.stocksalmanac.JSONobj.QuoteData;
 import com.a360.celsius.stocksalmanac.JSONobj.Results;
@@ -212,7 +213,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //=============================GOODS========================================
 
     public void bulkInsertGoodsQuoteDataToQuotesTable(Results results) {
-        deleteMaterialsQuoteDataTable();
+        deleteGoodsQuoteDataTable();
         ContentValues[] contentsArr = new ContentValues[results.getQuoteData().size()];;
         for(int i=0;i<results.getQuoteData().size();i++){
             ContentValues values = new ContentValues();
@@ -476,7 +477,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //=============================FINANCIALS========================================
 
     public void bulkInsertFinancialsQuoteDataToQuotesTable(Results results) {
-        deleteMaterialsQuoteDataTable();
+        deleteFinancialsQuoteDataTable();
         ContentValues[] contentsArr = new ContentValues[results.getQuoteData().size()];;
         for(int i=0;i<results.getQuoteData().size();i++){
             ContentValues values = new ContentValues();
@@ -553,7 +554,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         db.beginTransaction();
         try {
+
             db.delete(DatabaseHelperContract.FinancialsQuotesDataTableContents.TABLE_NAME, null, null);
+
             db.setTransactionSuccessful();
         } catch (Exception e) {
             e.printStackTrace();
@@ -608,7 +611,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //=============================HEALTHCARE========================================
 
     public void bulkInsertHealthCareQuoteDataToQuotesTable(Results results) {
-        deleteMaterialsQuoteDataTable();
+        deleteHealthCareQuoteDataTable();
         ContentValues[] contentsArr = new ContentValues[results.getQuoteData().size()];;
         for(int i=0;i<results.getQuoteData().size();i++){
             ContentValues values = new ContentValues();
@@ -634,7 +637,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         context.getContentResolver().bulkInsert(DatabaseHelperContract.HealthCareQuotesDataTableContents.CONTENT_URI, contentsArr);
     }
-
 
     public void addHealthCareQuoteDataToQuotesTable(Results results){
         deleteHealthCareQuoteDataTable();
@@ -741,7 +743,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //=============================OILANDGAS========================================
 
     public void bulkInsertOilAndGasQuoteDataToQuotesTable(Results results) {
-        deleteMaterialsQuoteDataTable();
+        deleteOilAndGasQuoteDataTable();
         ContentValues[] contentsArr = new ContentValues[results.getQuoteData().size()];;
         for(int i=0;i<results.getQuoteData().size();i++){
             ContentValues values = new ContentValues();
@@ -873,7 +875,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //=============================TECHNOLOGY========================================
 
     public void bulkInsertTechnologyQuoteDataToQuotesTable(Results results) {
-        deleteMaterialsQuoteDataTable();
+        deleteTechnologyQuoteDataTable();
         ContentValues[] contentsArr = new ContentValues[results.getQuoteData().size()];;
         for(int i=0;i<results.getQuoteData().size();i++){
             ContentValues values = new ContentValues();
@@ -1005,7 +1007,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //=============================UTILITIES========================================
 
     public void bulkInsertUtilitiesQuoteDataToQuotesTable(Results results) {
-        deleteMaterialsQuoteDataTable();
+        deleteUtilitiesQuoteDataTable();
         ContentValues[] contentsArr = new ContentValues[results.getQuoteData().size()];;
         for(int i=0;i<results.getQuoteData().size();i++){
             ContentValues values = new ContentValues();
@@ -1137,7 +1139,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //=============================INDUSTRIAL========================================
 
     public void bulkInsertIndustrialQuoteDataToQuotesTable(Results results) {
-        deleteMaterialsQuoteDataTable();
+        deleteIndustrialQuoteDataTable();
         ContentValues[] contentsArr = new ContentValues[results.getQuoteData().size()];;
         for(int i=0;i<results.getQuoteData().size();i++){
             ContentValues values = new ContentValues();
@@ -1163,7 +1165,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         context.getContentResolver().bulkInsert(DatabaseHelperContract.IndustrialQuotesDataTableContents.CONTENT_URI, contentsArr);
     }
-
 
     public void addIndustrialQuoteDataToQuotesTable(Results results){
         deleteIndustrialQuoteDataTable();

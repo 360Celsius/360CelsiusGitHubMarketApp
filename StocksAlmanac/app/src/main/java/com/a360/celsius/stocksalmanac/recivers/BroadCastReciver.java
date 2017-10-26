@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.a360.celsius.stocksalmanac.JSONobj.Status;
 import com.a360.celsius.stocksalmanac.R;
 import com.a360.celsius.stocksalmanac.fragments.FinancialsQuotesFragment;
 import com.a360.celsius.stocksalmanac.fragments.GoodsQuotesFragment;
@@ -26,6 +25,16 @@ import com.a360.celsius.stocksalmanac.service.StockDataPullServiceIntentKeys;
 
 public class BroadCastReciver extends BroadcastReceiver {
 
+    String MATERIALS_FRAGMENT_TAG = "MaterialsQuotesFragment";
+    String GOODS_FRAGMENT_TAG = "GoodsQuotesFragment";
+    String SERVICES_FRAGMENT_TAG = "ServicesQuotesFragment";
+    String FINANCIALS_FRAGMENT_TAG = "FinancialsQuotesFragment";
+    String HEALTHCARE_FRAGMENT_TAG = "HealtgcareQuotesFragment";
+    String OILANDGAS_FRAGMENT_TAG = "OilandgasQuotesFragment";
+    String TECHNOLOGY_FRAGMENT_TAG = "TechnologyQuotesFragment";
+    String UTILITIES_FRAGMENT_TAG = "UtilitiesQuotesFragment";
+    String INDUSTRIALS_FRAGMENT_TAG = "IndustrialQuotesFragment";
+
     @Override
     public void onReceive(Context context, Intent intent) {
 
@@ -35,7 +44,7 @@ public class BroadCastReciver extends BroadcastReceiver {
 
         if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_MATERIAL_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new MaterialsQuotesFragment());
+                ft.replace(R.id.list_view_placeholder, new MaterialsQuotesFragment(), MATERIALS_FRAGMENT_TAG);
                 ft.commit();
             }catch (Exception e){
                 e.printStackTrace();
@@ -43,7 +52,7 @@ public class BroadCastReciver extends BroadcastReceiver {
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_GOODS_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new GoodsQuotesFragment());
+                ft.replace(R.id.list_view_placeholder, new GoodsQuotesFragment(),GOODS_FRAGMENT_TAG);
                 ft.commit();
             }catch (Exception e){
                 e.printStackTrace();
@@ -51,7 +60,7 @@ public class BroadCastReciver extends BroadcastReceiver {
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_SERVICES_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new ServicesQuotesFragment());
+                ft.replace(R.id.list_view_placeholder, new ServicesQuotesFragment(),SERVICES_FRAGMENT_TAG);
                 ft.commit();
             }catch (Exception e){
                 e.printStackTrace();
@@ -59,7 +68,7 @@ public class BroadCastReciver extends BroadcastReceiver {
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_FINANCIALS_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new FinancialsQuotesFragment());
+                ft.replace(R.id.list_view_placeholder, new FinancialsQuotesFragment(),FINANCIALS_FRAGMENT_TAG);
                 ft.commit();
             }catch (Exception e){
                 e.printStackTrace();
@@ -67,7 +76,7 @@ public class BroadCastReciver extends BroadcastReceiver {
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_HEALTHCARE_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new HealthCareQuotesFragment());
+                ft.replace(R.id.list_view_placeholder, new HealthCareQuotesFragment(),HEALTHCARE_FRAGMENT_TAG);
                 ft.commit();
             }catch (Exception e){
                 e.printStackTrace();
@@ -75,7 +84,7 @@ public class BroadCastReciver extends BroadcastReceiver {
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_OILANDGAS_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new OilAndGasQuotesFragment());
+                ft.replace(R.id.list_view_placeholder, new OilAndGasQuotesFragment(),OILANDGAS_FRAGMENT_TAG);
                 ft.commit();
             }catch (Exception e){
                 e.printStackTrace();
@@ -83,7 +92,7 @@ public class BroadCastReciver extends BroadcastReceiver {
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_TECHNOLOGY_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new TechnologyQuotesFragment());
+                ft.replace(R.id.list_view_placeholder, new TechnologyQuotesFragment(),TECHNOLOGY_FRAGMENT_TAG);
                 ft.commit();
             }catch (Exception e){
                 e.printStackTrace();
@@ -91,7 +100,7 @@ public class BroadCastReciver extends BroadcastReceiver {
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_UTILITIES_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new UtilitiesQuotesFragment());
+                ft.replace(R.id.list_view_placeholder, new UtilitiesQuotesFragment(),UTILITIES_FRAGMENT_TAG);
                 ft.commit();
             }catch (Exception e){
                 e.printStackTrace();
@@ -99,7 +108,7 @@ public class BroadCastReciver extends BroadcastReceiver {
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_INDUSTRIAL_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new IndustrialQuotesFragment());
+                ft.replace(R.id.list_view_placeholder, new IndustrialQuotesFragment(),INDUSTRIALS_FRAGMENT_TAG);
                 ft.commit();
             }catch (Exception e){
                 e.printStackTrace();

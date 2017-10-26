@@ -1,9 +1,12 @@
 package com.a360.celsius.stocksalmanac.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +18,8 @@ import com.a360.celsius.stocksalmanac.datamodel.QuoteItemDataModel;
 import com.a360.celsius.stocksalmanac.datamodel.SideMenuItemDataModel;
 import com.a360.celsius.stocksalmanac.interfaces.DBhelperInterface;
 import com.a360.celsius.stocksalmanac.listadapter.QoutesDataLIstCustomAdapter;
+import com.a360.celsius.stocksalmanac.service.StockDataPullService;
+import com.a360.celsius.stocksalmanac.service.StockDataPullServiceIntentKeys;
 
 import java.util.ArrayList;
 
@@ -29,7 +34,27 @@ public class FinancialsQuotesFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_financials_quotes, container, false);
+
         listView=(ListView)view.findViewById(R.id.financials_data_list);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Intent msgIntent = new Intent(getContext(), StockDataPullService.class);
+                msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_FINANCIALS_KEY);
+                getContext().startService(msgIntent);
+
+                // Remember to CLEAR OUT old items before appending in the new ones
+                //adapter.clear();
+                // ...the data has come back, add new items to your adapter...
+               // adapter.addAll(...);
+                // Now we call setRefreshing(false) to signal refresh has finished
+                //mSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+
         return view;
     }
 
@@ -61,7 +86,9 @@ public class FinancialsQuotesFragment extends BaseFragment {
         }
 
         adapter= new QoutesDataLIstCustomAdapter(dataModels,getContext());
+
         listView.setAdapter(adapter);
+
 
     }
 }
