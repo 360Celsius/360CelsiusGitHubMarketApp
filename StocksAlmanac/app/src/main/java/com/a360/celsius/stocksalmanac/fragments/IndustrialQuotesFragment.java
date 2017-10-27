@@ -32,7 +32,7 @@ public class IndustrialQuotesFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_industrial_quotes, container, false);
 
         // Inflate the layout for this fragment
-        container.clearDisappearingChildren();
+        //container.clearDisappearingChildren();
 
         listView=(ListView)view.findViewById(R.id.industrial_data_list);
 

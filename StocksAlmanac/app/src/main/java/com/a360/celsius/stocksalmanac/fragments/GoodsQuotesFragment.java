@@ -34,7 +34,7 @@ public class GoodsQuotesFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_goods_quotes, container, false);
 
         // Inflate the layout for this fragment
-        container.clearDisappearingChildren();
+        //container.clearDisappearingChildren();
 
 
         listView=(ListView)view.findViewById(R.id.goods_data_list);

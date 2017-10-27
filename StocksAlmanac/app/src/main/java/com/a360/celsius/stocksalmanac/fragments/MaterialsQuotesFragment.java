@@ -33,7 +33,7 @@ public class MaterialsQuotesFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_materials_quotes, container, false);
 
         // Inflate the layout for this fragment
-        container.clearDisappearingChildren();
+        //container.clearDisappearingChildren();
 
 
         listView=(ListView)view.findViewById(R.id.materials_data_list);

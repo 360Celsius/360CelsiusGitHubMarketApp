@@ -31,7 +31,7 @@ public class OilAndGasQuotesFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_oilandgas_quotes, container, false);
 
         // Inflate the layout for this fragment
-        container.clearDisappearingChildren();
+        //container.clearDisappearingChildren();
 
         listView=(ListView)view.findViewById(R.id.oilandgas_data_list);
 

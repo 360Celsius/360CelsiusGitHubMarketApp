@@ -43,79 +43,75 @@ public class BroadCastReciver extends BroadcastReceiver {
 
         FragmentTransaction ft =   ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction();
 
+        if(((AppCompatActivity) context).getSupportFragmentManager().findFragmentById(R.id.list_view_placeholder) != null) {
+            ft.remove(((AppCompatActivity) context).getSupportFragmentManager().findFragmentById(R.id.list_view_placeholder));
+        }
+
         if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_MATERIAL_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new MaterialsQuotesFragment(), MATERIALS_FRAGMENT_TAG);
-                ft.commit();
+                ft.add(R.id.list_view_placeholder, new MaterialsQuotesFragment(), MATERIALS_FRAGMENT_TAG);
             }catch (Exception e){
                 e.printStackTrace();
             }
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_GOODS_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new GoodsQuotesFragment(),GOODS_FRAGMENT_TAG);
-                ft.commit();
+                ft.add(R.id.list_view_placeholder, new GoodsQuotesFragment(),GOODS_FRAGMENT_TAG);
             }catch (Exception e){
                 e.printStackTrace();
             }
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_SERVICES_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new ServicesQuotesFragment(),SERVICES_FRAGMENT_TAG);
-                ft.commit();
+                ft.add(R.id.list_view_placeholder, new ServicesQuotesFragment(),SERVICES_FRAGMENT_TAG);
             }catch (Exception e){
                 e.printStackTrace();
             }
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_FINANCIALS_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new FinancialsQuotesFragment(),FINANCIALS_FRAGMENT_TAG);
-                ft.commit();
+                ft.add(R.id.list_view_placeholder, new FinancialsQuotesFragment(),FINANCIALS_FRAGMENT_TAG);
             }catch (Exception e){
                 e.printStackTrace();
             }
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_HEALTHCARE_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new HealthCareQuotesFragment(),HEALTHCARE_FRAGMENT_TAG);
-                ft.commit();
+                ft.add(R.id.list_view_placeholder, new HealthCareQuotesFragment(),HEALTHCARE_FRAGMENT_TAG);
             }catch (Exception e){
                 e.printStackTrace();
             }
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_OILANDGAS_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new OilAndGasQuotesFragment(),OILANDGAS_FRAGMENT_TAG);
-                ft.commit();
+                ft.add(R.id.list_view_placeholder, new OilAndGasQuotesFragment(),OILANDGAS_FRAGMENT_TAG);
             }catch (Exception e){
                 e.printStackTrace();
             }
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_TECHNOLOGY_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new TechnologyQuotesFragment(),TECHNOLOGY_FRAGMENT_TAG);
-                ft.commit();
+                ft.add(R.id.list_view_placeholder, new TechnologyQuotesFragment(),TECHNOLOGY_FRAGMENT_TAG);
             }catch (Exception e){
                 e.printStackTrace();
             }
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_UTILITIES_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new UtilitiesQuotesFragment(),UTILITIES_FRAGMENT_TAG);
-                ft.commit();
+                ft.add(R.id.list_view_placeholder, new UtilitiesQuotesFragment(),UTILITIES_FRAGMENT_TAG);
             }catch (Exception e){
                 e.printStackTrace();
             }
 
         }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_INDUSTRIAL_KEY)){
             try {
-                ft.replace(R.id.list_view_placeholder, new IndustrialQuotesFragment(),INDUSTRIALS_FRAGMENT_TAG);
-                ft.commit();
+                ft.add(R.id.list_view_placeholder, new IndustrialQuotesFragment(),INDUSTRIALS_FRAGMENT_TAG);
             }catch (Exception e){
                 e.printStackTrace();
             }
 
         }
+        ft.commit();
 
     }
 }

@@ -32,9 +32,9 @@ public class HealthCareQuotesFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_healthcare_quotes, container, false);
 
         // Inflate the layout for this fragment
-        container.clearDisappearingChildren();
+        //container.clearDisappearingChildren();
 
-        
+
         listView=(ListView)view.findViewById(R.id.healthcare_data_list);
 
 

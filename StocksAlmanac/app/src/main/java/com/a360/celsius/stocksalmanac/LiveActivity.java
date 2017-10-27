@@ -134,6 +134,10 @@ public class LiveActivity extends BaseActivity {
 
     private void sendServiceRequestBySelectedCategory(SideMenuItemDataModel dataModel) {
 
+        if(getSupportFragmentManager().findFragmentById(R.id.list_view_placeholder) != null) {
+            getSupportFragmentManager().beginTransaction().remove(getSupportFragmentManager().findFragmentById(R.id.list_view_placeholder)).commit();
+        }
+
         Intent msgIntent = new Intent(getApplicationContext(), StockDataPullService.class);
         switch (dataModel.getCategoryID()){
             case 1:
