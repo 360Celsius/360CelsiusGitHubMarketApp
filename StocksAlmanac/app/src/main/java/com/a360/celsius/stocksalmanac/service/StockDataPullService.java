@@ -50,6 +50,7 @@ public class StockDataPullService extends IntentService {
                     helper.bulkInsertMaterialsQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getMaterialsResponce));
 
                 Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction(GET_QOUTES_DATA);
                 broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_MATERIAL_KEY);
                 sendBroadcast(broadcastIntent);
 

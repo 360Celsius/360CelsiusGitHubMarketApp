@@ -115,6 +115,13 @@ public class LiveActivity extends BaseActivity {
             }
         });
 
+        //selecting the first item FINANCIALS
+        drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_financials_bg));
+        sideMenuShadow.setBackgroundColor(getResources().getColor(R.color.sliding_menu_financials_bg));
+        Intent msgIntent = new Intent(getApplicationContext(), StockDataPullService.class);
+        msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_FINANCIALS_KEY);
+        startService(msgIntent);
+
     }
 
     @Override
@@ -141,38 +148,47 @@ public class LiveActivity extends BaseActivity {
         Intent msgIntent = new Intent(getApplicationContext(), StockDataPullService.class);
         switch (dataModel.getCategoryID()){
             case 1:
+                drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_financials_bg));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_FINANCIALS_KEY);
                 startService(msgIntent);
                 break;
             case 2:
+                drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_goods_bg));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_GOODS_KEY);
                 startService(msgIntent);
                 break;
             case 3:
+                drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_healthcare_bg));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_HEALTHCARE_KEY);
                 startService(msgIntent);
                 break;
             case 4:
+                drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_industrial_bg));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_INDUSTRIAL_KEY);
                 startService(msgIntent);
                 break;
             case 5:
+                drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_materials_bg));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_MATERIAL_KEY);
                 startService(msgIntent);
                 break;
             case 6:
+                drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_oilandgas_bg));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_OILANDGAS_KEY);
                 startService(msgIntent);
                 break;
             case 7:
+                drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_services_bg));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_SERVICES_KEY);
                 startService(msgIntent);
                 break;
             case 8:
+                drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_technology_bg));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_TECHNOLOGY_KEY);
                 startService(msgIntent);
                 break;
             case 9:
+                drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_utilities_bg));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_UTILITIES_KEY);
                 startService(msgIntent);
                 break;

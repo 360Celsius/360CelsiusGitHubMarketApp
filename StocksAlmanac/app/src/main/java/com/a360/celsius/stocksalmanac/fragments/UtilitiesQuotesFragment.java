@@ -25,8 +25,6 @@ import com.a360.celsius.stocksalmanac.service.StockDataPullServiceIntentKeys;
 
 public class UtilitiesQuotesFragment extends BaseFragment {
 
-    private DBhelperInterface mCallback;
-    private Results results;
 
     @Nullable
     @Override
