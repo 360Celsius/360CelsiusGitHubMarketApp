@@ -14,6 +14,7 @@ import android.widget.ListView;
 import com.a360.celsius.stocksalmanac.JSONobj.Results;
 import com.a360.celsius.stocksalmanac.datamodel.QuoteItemDataModel;
 import com.a360.celsius.stocksalmanac.interfaces.DBhelperInterface;
+import com.a360.celsius.stocksalmanac.interfaces.ProgressBarInterface;
 import com.a360.celsius.stocksalmanac.listadapter.QoutesDataLIstCustomAdapter;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class BaseFragment extends Fragment{
     public SwipeRefreshLayout mSwipeRefreshLayout;
 
     public DBhelperInterface mCallback;
+    public ProgressBarInterface progressBarInterface;
     public Results results;
     public ArrayList<QuoteItemDataModel> dataModels;
     public ListView listView;
@@ -38,6 +40,7 @@ public class BaseFragment extends Fragment{
         super.onAttach(activity);
         dataModels= new ArrayList<>();
         mCallback = (DBhelperInterface) activity;
+        progressBarInterface  = (ProgressBarInterface) activity;
 
     }
 }

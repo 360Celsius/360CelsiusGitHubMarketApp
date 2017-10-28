@@ -62,6 +62,7 @@ public class IndustrialQuotesFragment extends BaseFragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         results = mCallback.getDBhelper().getIndustrialData();
+        progressBarInterface.getProgressBar().setVisibility(View.GONE);
     }
 
     @Override

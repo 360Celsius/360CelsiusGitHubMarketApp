@@ -61,6 +61,7 @@ public class OilAndGasQuotesFragment extends BaseFragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         results = mCallback.getDBhelper().getOilANdGasData();
+        progressBarInterface.getProgressBar().setVisibility(View.GONE);
     }
 
     @Override

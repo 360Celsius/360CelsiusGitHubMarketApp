@@ -63,6 +63,7 @@ public class HealthCareQuotesFragment extends BaseFragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         results = mCallback.getDBhelper().getHealthCAreData();
+        progressBarInterface.getProgressBar().setVisibility(View.GONE);
     }
 
     @Override

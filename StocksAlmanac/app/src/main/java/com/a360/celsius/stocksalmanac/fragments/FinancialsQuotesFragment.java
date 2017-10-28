@@ -65,6 +65,7 @@ public class FinancialsQuotesFragment extends BaseFragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         results = mCallback.getDBhelper().getFinancialsData();
+        progressBarInterface.getProgressBar().setVisibility(View.GONE);
     }
 
 

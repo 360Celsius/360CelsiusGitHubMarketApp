@@ -13,9 +13,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.a360.celsius.stocksalmanac.datamodel.SideMenuItemDataModel;
+import com.a360.celsius.stocksalmanac.interfaces.ProgressBarInterface;
 import com.a360.celsius.stocksalmanac.listadapter.SideMenuListCustomAdapter;
 import com.a360.celsius.stocksalmanac.recivers.BroadCastReciver;
 import com.a360.celsius.stocksalmanac.service.StockDataPullService;
@@ -23,7 +25,7 @@ import com.a360.celsius.stocksalmanac.service.StockDataPullServiceIntentKeys;
 
 import java.util.ArrayList;
 
-public class LiveActivity extends BaseActivity {
+public class LiveActivity extends BaseActivity implements ProgressBarInterface {
 
 
     private BroadCastReciver receiver;
@@ -40,6 +42,8 @@ public class LiveActivity extends BaseActivity {
 
     private static SideMenuListCustomAdapter adapter;
 
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,7 @@ public class LiveActivity extends BaseActivity {
         mainView = (RelativeLayout) findViewById(R.id.main_view);
         sideMenuShadow = (View) findViewById(R.id.shadow);
         mainView = (RelativeLayout) findViewById(R.id.main_view);
+        progressBar = (ProgressBar) findViewById(R.id.list_spinner);
 
         setSupportActionBar(toolbar);
 
@@ -121,6 +126,7 @@ public class LiveActivity extends BaseActivity {
         Intent msgIntent = new Intent(getApplicationContext(), StockDataPullService.class);
         msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_FINANCIALS_KEY);
         startService(msgIntent);
+        progressBar.setVisibility(View.VISIBLE);
 
     }
 
@@ -144,6 +150,8 @@ public class LiveActivity extends BaseActivity {
         if(getSupportFragmentManager().findFragmentById(R.id.list_view_placeholder) != null) {
             getSupportFragmentManager().beginTransaction().remove(getSupportFragmentManager().findFragmentById(R.id.list_view_placeholder)).commit();
         }
+
+        progressBar.setVisibility(View.VISIBLE);
 
         Intent msgIntent = new Intent(getApplicationContext(), StockDataPullService.class);
         switch (dataModel.getCategoryID()){
@@ -226,5 +234,10 @@ public class LiveActivity extends BaseActivity {
 //        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public ProgressBar getProgressBar() {
+        return progressBar;
     }
 }

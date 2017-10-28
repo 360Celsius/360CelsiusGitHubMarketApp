@@ -62,6 +62,7 @@ public class UtilitiesQuotesFragment extends BaseFragment {
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         results = mCallback.getDBhelper().getUtilitiesData();
+        progressBarInterface.getProgressBar().setVisibility(View.GONE);
     }
 
     @Override
