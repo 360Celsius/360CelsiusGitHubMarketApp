@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.a360.celsius.stocksalmanac.datamodel.SideMenuItemDataModel;
 import com.a360.celsius.stocksalmanac.interfaces.ProgressBarInterface;
@@ -38,6 +39,7 @@ public class LiveActivity extends BaseActivity implements ProgressBarInterface {
     private ListView listView;
     private View sideMenuShadow;
     private RelativeLayout mainViewl;
+    private TextView selectedCategorText;
 
 
     private static SideMenuListCustomAdapter adapter;
@@ -55,6 +57,7 @@ public class LiveActivity extends BaseActivity implements ProgressBarInterface {
         sideMenuShadow = (View) findViewById(R.id.shadow);
         mainView = (RelativeLayout) findViewById(R.id.main_view);
         progressBar = (ProgressBar) findViewById(R.id.list_spinner);
+        selectedCategorText = (TextView) findViewById(R.id.selected_category_text);
 
         setSupportActionBar(toolbar);
 
@@ -127,6 +130,7 @@ public class LiveActivity extends BaseActivity implements ProgressBarInterface {
         msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_FINANCIALS_KEY);
         startService(msgIntent);
         progressBar.setVisibility(View.VISIBLE);
+        selectedCategorText.setText(getResources().getString(R.string.side_menu_financials).replaceAll("(.{1})", "$1\n"));
 
     }
 
@@ -157,46 +161,55 @@ public class LiveActivity extends BaseActivity implements ProgressBarInterface {
         switch (dataModel.getCategoryID()){
             case 1:
                 drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_financials_bg));
+                selectedCategorText.setText(getResources().getString(R.string.side_menu_financials).replaceAll("(.{1})", "$1\n"));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_FINANCIALS_KEY);
                 startService(msgIntent);
                 break;
             case 2:
                 drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_goods_bg));
+                selectedCategorText.setText(getResources().getString(R.string.side_menu_goods).replaceAll("(.{1})", "$1\n"));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_GOODS_KEY);
                 startService(msgIntent);
                 break;
             case 3:
                 drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_healthcare_bg));
+                selectedCategorText.setText(getResources().getString(R.string.side_menu_healthcare).replaceAll("(.{1})", "$1\n"));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_HEALTHCARE_KEY);
                 startService(msgIntent);
                 break;
             case 4:
                 drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_industrial_bg));
+                selectedCategorText.setText(getResources().getString(R.string.side_menu_industrial).replaceAll("(.{1})", "$1\n"));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_INDUSTRIAL_KEY);
                 startService(msgIntent);
                 break;
             case 5:
                 drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_materials_bg));
+                selectedCategorText.setText(getResources().getString(R.string.side_menu_materials).replaceAll("(.{1})", "$1\n"));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_MATERIAL_KEY);
                 startService(msgIntent);
                 break;
             case 6:
                 drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_oilandgas_bg));
+                selectedCategorText.setText(getResources().getString(R.string.side_menu_oilandgas).replaceAll("(.{1})", "$1\n"));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_OILANDGAS_KEY);
                 startService(msgIntent);
                 break;
             case 7:
                 drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_services_bg));
+                selectedCategorText.setText(getResources().getString(R.string.side_menu_services).replaceAll("(.{1})", "$1\n"));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_SERVICES_KEY);
                 startService(msgIntent);
                 break;
             case 8:
                 drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_technology_bg));
+                selectedCategorText.setText(getResources().getString(R.string.side_menu_technology).replaceAll("(.{1})", "$1\n"));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_TECHNOLOGY_KEY);
                 startService(msgIntent);
                 break;
             case 9:
                 drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_utilities_bg));
+                selectedCategorText.setText(getResources().getString(R.string.side_menu_utilities).replaceAll("(.{1})", "$1\n"));
                 msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_UTILITIES_KEY);
                 startService(msgIntent);
                 break;

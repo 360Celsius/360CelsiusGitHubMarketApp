@@ -20,5 +20,6 @@
     <color name="sliding_menu_technology_bg">#9B2FAE</color>
     <color name="sliding_menu_utilities_bg">#F1453D</color>
 
+    <color name="selected_category_text_color">#FFFFFF</color>
 
 </resources>

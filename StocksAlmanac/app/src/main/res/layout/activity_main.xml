@@ -12,11 +12,28 @@
         android:layout_marginTop="?attr/actionBarSize"
         android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/selected_category_text"
+            android:layout_width="12dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/selected_category_text_color"
+            android:text="T\ne\nc\nh\nn\no\nl\no\ng\ny"
+            android:textSize="12dp"
+            android:textAllCaps="true"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:includeFontPadding="false"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"/>
 
         <FrameLayout
             android:id="@+id/list_view_placeholder"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_toRightOf="@+id/selected_category_text"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="1dp">
         </FrameLayout>
 
         <ProgressBar
