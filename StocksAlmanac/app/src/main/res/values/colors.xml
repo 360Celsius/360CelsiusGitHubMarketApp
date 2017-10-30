@@ -22,4 +22,9 @@
 
     <color name="selected_category_text_color">#FFFFFF</color>
 
+    <color name="up_color">#9BBD99</color>
+    <color name="down_color">#CE7878</color>
+    <color name="no_change_color">#C0C0C0</color>
+
+
 </resources>

@@ -1,26 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="91dp"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
     android:background="#32445C">
 
     <View
         android:id="@+id/up_or_down_color"
         android:layout_width="4dp"
         android:layout_height="match_parent"
-        android:background="#FF0000"
-        android:layout_marginTop="12dp"
+        android:layout_alignParentLeft="true"
         android:layout_marginBottom="12dp"
         android:layout_marginLeft="6dp"
-        android:layout_alignParentLeft="true"/>
+        android:layout_marginTop="12dp"
+        android:background="#FF0000" />
 
     <TextView
         android:id="@+id/quote_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:layout_marginLeft="6dp"
+        android:layout_marginTop="12dp"
+        android:layout_toRightOf="@+id/up_or_down_color"
         android:textColor="#FFFFFF"
-        android:layout_toRightOf="@+id/up_or_down_color"/>
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/quote_symbol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="12dp"
+        android:textColor="#FFFFFF"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/quote_last_price_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quote_name"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@+id/up_or_down_color"
+        android:text="Last price:"
+        android:textColor="#AEAEAE"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/quote_last_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/quote_name"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="2dp"
+        android:text="17.5"
+        android:textColor="#FFFFFF"
+        android:textSize="12dp" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quote_last_price_tag"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@+id/up_or_down_color"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+
+        <RelativeLayout
+            android:id="@+id/left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/net_change_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Net change:"
+                android:textColor="#AEAEAE"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/net_change_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/net_change_tag"
+                android:layout_alignParentRight="true"
+                android:text="-0.22"
+                android:textColor="#FFFFFF"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/open_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/net_change_tag"
+                android:layout_marginTop="2dp"
+
+                android:text="Open:"
+                android:textColor="#AEAEAE"
+                android:textSize="12dp" />
+
+
+            <TextView
+                android:id="@+id/open_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/open_tag"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/net_change_tag"
+                android:text="-0.22"
+                android:textColor="#FFFFFF"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/high_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/open_tag"
+                android:layout_marginTop="2dp"
+
+                android:text="High:"
+                android:textColor="#AEAEAE"
+                android:textSize="12dp" />
+
+
+            <TextView
+                android:id="@+id/high_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/high_tag"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/open_tag"
+                android:text="-0.22"
+                android:textColor="#FFFFFF"
+                android:textSize="12dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/right"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1">
+
+
+            <TextView
+                android:id="@+id/percent_change_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Percent change:"
+                android:textColor="#AEAEAE"
+
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/percent_change_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/percent_change_tag"
+                android:layout_alignParentRight="true"
+                android:text="-0.22"
+                android:textColor="#FFFFFF"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/close_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/percent_change_tag"
+                android:layout_marginTop="2dp"
+
+                android:text="Close:"
+                android:textColor="#AEAEAE"
+                android:textSize="12dp" />
+
+
+            <TextView
+                android:id="@+id/close_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/close_tag"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/percent_change_tag"
+                android:text="-0.22"
+                android:textColor="#FFFFFF"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/low_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/close_tag"
+                android:layout_marginTop="2dp"
+
+                android:text="Low:"
+                android:textColor="#AEAEAE"
+                android:textSize="12dp" />
+
+
+            <TextView
+                android:id="@+id/low_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/low_tag"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/close_tag"
+                android:text="-0.22"
+                android:textColor="#FFFFFF"
+                android:textSize="12dp" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
 
 </RelativeLayout>

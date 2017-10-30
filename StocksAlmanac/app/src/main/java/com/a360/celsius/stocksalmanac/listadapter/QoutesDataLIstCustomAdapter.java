@@ -1,6 +1,7 @@
 package com.a360.celsius.stocksalmanac.listadapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import com.a360.celsius.stocksalmanac.R;
 import com.a360.celsius.stocksalmanac.datamodel.QuoteItemDataModel;
 import com.a360.celsius.stocksalmanac.datamodel.SideMenuItemDataModel;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -32,7 +35,15 @@ public class QoutesDataLIstCustomAdapter extends ArrayAdapter<QuoteItemDataModel
     // View lookup cache
     private static class ViewHolder {
         TextView qouteName;
-
+        TextView quoteSymbol;
+        TextView quoteLastPrice;
+        View upOrDownColor;
+        TextView netChange;
+        TextView percentChange;
+        TextView open;
+        TextView close;
+        TextView low;
+        TextView high;
     }
 
     public QoutesDataLIstCustomAdapter(ArrayList<QuoteItemDataModel> data, Context context) {
@@ -57,6 +68,15 @@ public class QoutesDataLIstCustomAdapter extends ArrayAdapter<QuoteItemDataModel
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.quote_list_item, parent, false);
             viewHolder.qouteName = (TextView) convertView.findViewById(R.id.quote_name);
+            viewHolder.quoteSymbol = (TextView) convertView.findViewById(R.id.quote_symbol);
+            viewHolder.quoteLastPrice = (TextView) convertView.findViewById(R.id.quote_last_price);
+            viewHolder.upOrDownColor = (View) convertView.findViewById(R.id.up_or_down_color);
+            viewHolder.netChange = (TextView) convertView.findViewById(R.id.net_change_value);
+            viewHolder.percentChange = (TextView) convertView.findViewById(R.id.percent_change_value);
+            viewHolder.open = (TextView) convertView.findViewById(R.id.open_value);
+            viewHolder.close = (TextView) convertView.findViewById(R.id.close_value);
+            viewHolder.low = (TextView) convertView.findViewById(R.id.low_value);
+            viewHolder.high = (TextView) convertView.findViewById(R.id.high_value);
 
             //result=convertView;
 
@@ -67,6 +87,30 @@ public class QoutesDataLIstCustomAdapter extends ArrayAdapter<QuoteItemDataModel
         }
 
         viewHolder.qouteName.setText(dataModel.getName());
+        viewHolder.quoteSymbol.setText(dataModel.getSymbol());
+        viewHolder.quoteLastPrice.setText(String.valueOf(dataModel.getLastPrice()));
+        if(String.valueOf(dataModel.getPercentChange()).contains("-") && !String.valueOf(dataModel.getPercentChange()).equalsIgnoreCase("0.0")) {
+            viewHolder.upOrDownColor.setBackgroundColor(mContext.getResources().getColor(R.color.down_color));
+            viewHolder.netChange.setTextColor(mContext.getResources().getColor(R.color.down_color));
+            viewHolder.percentChange.setTextColor(mContext.getResources().getColor(R.color.down_color));
+        }else if(!String.valueOf(dataModel.getPercentChange()).contains("-")&&!String.valueOf(dataModel.getPercentChange()).equalsIgnoreCase("0.0")) {
+            viewHolder.upOrDownColor.setBackgroundColor(mContext.getResources().getColor(R.color.up_color));
+            viewHolder.netChange.setTextColor(mContext.getResources().getColor(R.color.up_color));
+            viewHolder.percentChange.setTextColor(mContext.getResources().getColor(R.color.up_color));
+        }else {
+            viewHolder.upOrDownColor.setBackgroundColor(mContext.getResources().getColor(R.color.no_change_color));
+            viewHolder.netChange.setTextColor(mContext.getResources().getColor(R.color.no_change_color));
+            viewHolder.percentChange.setTextColor(mContext.getResources().getColor(R.color.no_change_color));
+        }
+
+
+        viewHolder.netChange.setText(String.valueOf(dataModel.getNetChange()));
+        viewHolder.percentChange.setText(String.valueOf(dataModel.getPercentChange()));
+        viewHolder.open.setText(String.valueOf(dataModel.getOpen()));
+        viewHolder.close.setText(String.valueOf(dataModel.getClose()));
+        viewHolder.low.setText(String.valueOf(dataModel.getLow()));
+        viewHolder.high.setText(String.valueOf(dataModel.getHigh()));
+
 
         // Return the completed view to render on screen
         return convertView;
