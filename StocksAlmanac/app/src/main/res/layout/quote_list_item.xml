@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="138dp"
     android:background="#32445C">
 
     <View
@@ -59,13 +59,38 @@
         android:textSize="12dp" />
 
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/quote_last_updated_tag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/quote_last_price_tag"
         android:layout_marginLeft="6dp"
+        android:layout_marginTop="2dp"
+        android:layout_toRightOf="@+id/up_or_down_color"
+        android:text="Last updated:"
+        android:textColor="#AEAEAE"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/quote_last_updated_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/quote_last_price_tag"
         android:layout_marginRight="6dp"
         android:layout_marginTop="2dp"
+        android:text="30/10/2017"
+        android:textColor="#FFFFFF"
+        android:textSize="12dp" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quote_last_updated_tag"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="0dp"
         android:layout_toRightOf="@+id/up_or_down_color"
         android:orientation="horizontal"
         android:weightSum="2">
@@ -223,6 +248,5 @@
 
 
     </LinearLayout>
-
 
 </RelativeLayout>
