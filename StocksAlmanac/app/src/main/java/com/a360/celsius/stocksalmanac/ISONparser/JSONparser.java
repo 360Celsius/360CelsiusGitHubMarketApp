@@ -64,6 +64,8 @@ public class JSONparser {
                 quoteData.setClose(quoteItemData.optDouble(JSONparserDict.CLOSE,0));
                 quoteData.setFlag(quoteItemData.optString(JSONparserDict.FLAG,null));
                 quoteData.setVolume(quoteItemData.optDouble(JSONparserDict.VOLUME,0));
+                quoteData.setHigh(quoteItemData.optDouble(JSONparserDict.HIGH,0));
+                quoteData.setLow(quoteItemData.optDouble(JSONparserDict.LOW,0));
                 quoteDataList.add(quoteData);
             }
             resultes.setQuoteData(quoteDataList);
