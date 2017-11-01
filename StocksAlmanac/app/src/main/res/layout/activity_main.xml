@@ -9,7 +9,6 @@
     <RelativeLayout
         android:id="@+id/main_view"
         android:layout_width="match_parent"
-        android:layout_marginTop="50dp"
         android:layout_height="match_parent">
 
         <TextView
@@ -30,6 +29,7 @@
         <FrameLayout
             android:id="@+id/list_view_placeholder"
             android:layout_width="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
             android:layout_toRightOf="@+id/selected_category_text"
             android:layout_height="match_parent"
             android:layout_marginLeft="0dp"
