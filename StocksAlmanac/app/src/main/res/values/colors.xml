@@ -26,5 +26,7 @@
     <color name="down_color">#CE7878</color>
     <color name="no_change_color">#C0C0C0</color>
 
+    <color name="splash_bg">#000000</color>
+
 
 </resources>
