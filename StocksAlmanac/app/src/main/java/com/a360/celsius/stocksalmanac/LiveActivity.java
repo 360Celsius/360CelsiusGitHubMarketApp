@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.graphics.Color;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.a360.celsius.stocksalmanac.datamodel.SideMenuItemDataModel;
+import com.a360.celsius.stocksalmanac.fragments.FinancialsQuotesFragment;
 import com.a360.celsius.stocksalmanac.interfaces.ProgressBarInterface;
 import com.a360.celsius.stocksalmanac.listadapter.SideMenuListCustomAdapter;
 import com.a360.celsius.stocksalmanac.recivers.BroadCastReciver;
@@ -29,7 +32,6 @@ import java.util.ArrayList;
 public class LiveActivity extends BaseActivity implements ProgressBarInterface {
 
 
-    private BroadCastReciver receiver;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private DrawerLayout drawerLayout;
     private RelativeLayout mainView;
@@ -126,10 +128,22 @@ public class LiveActivity extends BaseActivity implements ProgressBarInterface {
         //selecting the first item FINANCIALS
         drawerLayout.setBackgroundColor(getResources().getColor(R.color.sliding_menu_financials_bg));
         sideMenuShadow.setBackgroundColor(getResources().getColor(R.color.sliding_menu_financials_bg));
-        Intent msgIntent = new Intent(getApplicationContext(), StockDataPullService.class);
-        msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_FINANCIALS_KEY);
-        startService(msgIntent);
-        progressBar.setVisibility(View.VISIBLE);
+//        Intent msgIntent = new Intent(getApplicationContext(), StockDataPullService.class);
+//        msgIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_FINANCIALS_KEY);
+//        startService(msgIntent);
+//        progressBar.setVisibility(View.VISIBLE);
+        if(getIntent().getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_FINANCIALS_FROM_SPLASH_KEY)){
+            FragmentTransaction ft =   getSupportFragmentManager().beginTransaction();
+            if(getSupportFragmentManager().findFragmentById(R.id.list_view_placeholder) != null) {
+                ft.remove(getSupportFragmentManager().findFragmentById(R.id.list_view_placeholder));
+                ft.add(R.id.list_view_placeholder, new FinancialsQuotesFragment(),BroadCastReciver.FINANCIALS_FRAGMENT_TAG);
+                ft.commit();
+            }else{
+                ft.add(R.id.list_view_placeholder, new FinancialsQuotesFragment(),BroadCastReciver.FINANCIALS_FRAGMENT_TAG);
+                ft.commit();
+            }
+
+        }
         selectedCategorText.setText(getResources().getString(R.string.side_menu_financials).replaceAll("(.{1})", "$1\n"));
 
     }
@@ -137,15 +151,10 @@ public class LiveActivity extends BaseActivity implements ProgressBarInterface {
     @Override
     protected void onResume() {
         super.onResume();
-
-        IntentFilter filter = new IntentFilter(StockDataPullService.GET_QOUTES_DATA);
-        receiver = new BroadCastReciver();
-        registerReceiver(receiver, filter);
     }
 
     @Override
     protected void onStop() {
-        unregisterReceiver(receiver);
         super.onStop();
     }
 

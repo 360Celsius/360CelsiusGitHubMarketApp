@@ -1,5 +1,6 @@
 package com.a360.celsius.stocksalmanac;
 
+import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +10,8 @@ import android.view.WindowManager;
 
 import com.a360.celsius.stocksalmanac.dbhelper.DatabaseHelper;
 import com.a360.celsius.stocksalmanac.interfaces.DBhelperInterface;
+import com.a360.celsius.stocksalmanac.recivers.BroadCastReciver;
+import com.a360.celsius.stocksalmanac.service.StockDataPullService;
 
 
 /**
@@ -18,6 +21,8 @@ import com.a360.celsius.stocksalmanac.interfaces.DBhelperInterface;
 public class BaseActivity extends AppCompatActivity implements DBhelperInterface{
 
     public static DatabaseHelper helper = null;
+    private BroadCastReciver receiver;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +38,22 @@ public class BaseActivity extends AppCompatActivity implements DBhelperInterface
         helper = DatabaseHelper.getInstance(getApplicationContext());
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
+
+        IntentFilter filter = new IntentFilter(StockDataPullService.GET_QOUTES_DATA);
+        receiver = new BroadCastReciver();
+        registerReceiver(receiver, filter);
     }
 
     @Override
     protected void onStop() {
+        unregisterReceiver(receiver);
         super.onStop();
     }
+
 
     @Override
     public DatabaseHelper getDBhelper() {

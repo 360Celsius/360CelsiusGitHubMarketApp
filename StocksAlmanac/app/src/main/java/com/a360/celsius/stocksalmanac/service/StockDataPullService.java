@@ -194,6 +194,23 @@ public class StockDataPullService extends IntentService {
                 e.printStackTrace();
             }
 
+        }else if(intent.getStringExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY).equalsIgnoreCase(StockDataPullServiceIntentKeys.DATA_TYPE_FINANCIALS_FROM_SPLASH_KEY)) {
+            try {
+
+                String getFinancialsResponce = null;
+                getFinancialsResponce = networkHTTPRequests.getFinancials();
+                Status status = jSONparser.getStatusFromJson(getFinancialsResponce);
+                if (status != null && status.getCode() == 200)
+                    helper.bulkInsertFinancialsQuoteDataToQuotesTable(jSONparser.getResultsFromJson(getFinancialsResponce));
+
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction(GET_QOUTES_DATA);
+                broadcastIntent.putExtra(StockDataPullServiceIntentKeys.DATA_TYPE_KEY, StockDataPullServiceIntentKeys.DATA_TYPE_FINANCIALS_FROM_SPLASH_KEY);
+                sendBroadcast(broadcastIntent);
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
     }
 }

@@ -18,4 +18,5 @@ public class StockDataPullServiceIntentKeys {
     public static final String DATA_TYPE_UTILITIES_KEY = "DATA_TYPE_UTILITIES_KEY";
     public static final String DATA_TYPE_INDUSTRIAL_KEY = "DATA_TYPE_INDUSTRIAL_KEY";
 
+    public static final String DATA_TYPE_FINANCIALS_FROM_SPLASH_KEY = "DATA_TYPE_FINANCIALS_FROM_SPLASH_KEY";
 }
